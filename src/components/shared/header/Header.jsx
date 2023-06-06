@@ -10,6 +10,7 @@ const Header = () => {
   <li><Link className='text-lg font-medium' to={`/`}>Instructors</Link></li>
   <li><Link className='text-lg font-medium' to={`/`}>Classes</Link></li>
   <li><Link className='text-lg font-medium' to={`/`}>Secret</Link></li>
+  <li><Link className='text-lg font-medium' to={`/login`}>Loin</Link></li>
 </>
 
   return (
