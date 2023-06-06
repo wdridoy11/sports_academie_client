@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-//import loginImg from '../../assets/login.png'
+import { AuthContext } from '../../context/AuthProvider';
+import loginImg from '../../assets/login.png'
 const bgImage =`https://img.freepik.com/free-photo/sports-tools_53876-138077.jpg?w=900&t=st=1686065798~exp=1686066398~hmac=49de08e1ec1392f4b6527388784cb99430c4a629bb8e5b18a72c65a06e3e6923`
 
 const Login = () => {
 
+    const {loginUser} = useContext(AuthContext);
+    const [error,setError] = useState("")
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data)
+        loginUser(data.email, data.password)
+        .then((res)=>{
+          const user = res.user;
+          console.log(user)
+        })
+        .catch((err)=>setError(err.message))
     };
   
   return (
@@ -16,9 +24,10 @@ const Login = () => {
         <div className="hero min-h-screen" style={{ backgroundImage: `url(${bgImage})`}}>
           <div className="hero-overlay bg-opacity-30"></div>
             <div className='container mx-auto px-5'>
-                <div className='grid md:grid-cols-2 glass gap-10 p-10 rounded-xl items-center'>
+                <div className='grid md:grid-cols-2 glass gap-10 py-20 px-10 rounded-xl items-center'>
                     <div className=''>
                         <form onSubmit={handleSubmit(onSubmit)}>
+                          <p className='text-red-600 text-center mb-2 text-lg '>{error}</p>
                           <div className='mb-3'>
                             <input 
                                   type="email" 
@@ -53,7 +62,7 @@ const Login = () => {
                         <div className="divider before:bg-white after:bg-white text-white">OR</div>
                     </div>
                     <div>
-                        {/* <img className='w-full md:w-9/12' src={loginImg} alt="login" /> */}
+                        <img className='w-full md:w-9/12' src={loginImg} alt="login" />
                     </div>
                 </div>
             </div>
