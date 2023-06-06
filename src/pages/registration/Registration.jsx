@@ -3,6 +3,7 @@ import { AuthContext } from '../../context/AuthProvider';
 import loginImg from '../../assets/login.png'
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import SocialLogin from '../../components/shared/socialLogin/SocialLogin';
 const bgImage =`https://img.freepik.com/free-photo/sports-tools_53876-138077.jpg?w=900&t=st=1686065798~exp=1686066398~hmac=49de08e1ec1392f4b6527388784cb99430c4a629bb8e5b18a72c65a06e3e6923`
 
 const Registration = () => {
@@ -115,6 +116,7 @@ const Registration = () => {
                       New here? <Link className='text-slate-800' to={`/login`}> Login</Link>
                   </p>
                   <div className="divider before:bg-white after:bg-white text-white">OR</div>
+                  <SocialLogin></SocialLogin>
               </div>
               <div>
                   <img className='w-full md:w-9/12' src={loginImg} alt="login" />
