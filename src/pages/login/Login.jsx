@@ -4,13 +4,19 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import loginImg from '../../assets/login.png'
 import SocialLogin from '../../components/shared/socialLogin/SocialLogin';
+import { FaEye } from 'react-icons/fa';
 const bgImage =`https://img.freepik.com/free-photo/sports-tools_53876-138077.jpg?w=900&t=st=1686065798~exp=1686066398~hmac=49de08e1ec1392f4b6527388784cb99430c4a629bb8e5b18a72c65a06e3e6923`
 
 const Login = () => {
 
     const {loginUser} = useContext(AuthContext);
-    const [error,setError] = useState("")
+    // firebase login error print
+    const [error,setError] = useState("");
+    // password show and hide
+    const [showPassword, setShowPassword] = useState(false);
+    // react hook form
     const { register, handleSubmit, formState: { errors } } = useForm();
+    // handle login system
     const onSubmit = data => {
         loginUser(data.email, data.password)
         .then((res)=>{
@@ -19,7 +25,7 @@ const Login = () => {
         })
         .catch((err)=>setError(err.message))
     };
-  
+
   return (
     <div>
         <div className="hero min-h-screen" style={{ backgroundImage: `url(${bgImage})`}}>
@@ -41,14 +47,19 @@ const Login = () => {
                               {errors.email?.type === 'required' && <p className='text-red-600 pl-3 mt-1' role="alert">Email field is required</p>}
                           </div>
                           <div>
-                            <input 
-                                  type="password" 
-                                  name='password' 
-                                  id='password' 
-                                  {...register("password",{required: true})}
-                                  placeholder="Enter your password"
-                                  className="bg-transparent px-5 py-3 outline-none placeholder-white border border-white rounded-full w-full" 
-                              />
+                              <div className='relative'>
+                                <input 
+                                    type={showPassword ? "text":"password"} 
+                                    name='password' 
+                                    id='password' 
+                                    {...register("password",{required: true})}
+                                    placeholder="Enter your password"
+                                    className="bg-transparent px-5 py-3 outline-none placeholder-white border border-white rounded-full w-full" 
+                                />
+                                <button onClick={()=>setShowPassword(password=>!password)} className='absolute top-1/3 right-6 text-xl'>
+                                    <FaEye></FaEye>
+                                </button>
+                              </div>
                               {errors.password?.type === 'required' && <p className='text-red-600 pl-3 mt-1' role="alert">Password field is required</p>}
                           </div>
                           <input 

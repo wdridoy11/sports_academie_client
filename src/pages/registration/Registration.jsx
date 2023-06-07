@@ -1,13 +1,15 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { AuthContext } from '../../context/AuthProvider';
 import loginImg from '../../assets/login.png'
 import { useForm } from 'react-hook-form';
+import { FaEye } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import SocialLogin from '../../components/shared/socialLogin/SocialLogin';
 const bgImage =`https://img.freepik.com/free-photo/sports-tools_53876-138077.jpg?w=900&t=st=1686065798~exp=1686066398~hmac=49de08e1ec1392f4b6527388784cb99430c4a629bb8e5b18a72c65a06e3e6923`
 
 const Registration = () => {
-
+  const [showPassword, setShowPassword] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState(false);
   const {createUserUsingEmail} = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
@@ -66,33 +68,43 @@ const Registration = () => {
                         {errors.email?.type === 'required' && <p className='text-red-600 pl-3 mt-1' role="alert">Email field is required</p>}
                     </div>
                     <div className='mb-3'>
-                      <input 
-                            type="password" 
-                            name='password' 
-                            id='password' 
-                            {...register("password",
-                              {
-                                required: true,
-                                minLength: 6, 
-                                pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
-                              })
-                            }
-                            placeholder="Enter your password"
-                            className="bg-transparent px-5 py-3 outline-none placeholder-white border border-white rounded-full w-full" 
-                        />
+                      <div className='relative'>
+                          <input 
+                                type={showPassword ? "text":"password"} 
+                                name='password' 
+                                id='password' 
+                                {...register("password",
+                                  {
+                                    required: true,
+                                    minLength: 6, 
+                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                                  })
+                                }
+                                placeholder="Enter your password"
+                                className="bg-transparent px-5 py-3 outline-none placeholder-white border border-white rounded-full w-full" 
+                            />
+                            <button onClick={()=>setShowPassword(password=>!password)} className='absolute top-1/3 right-6 text-xl'>
+                                <FaEye></FaEye>
+                            </button>
+                      </div>
                         {errors.password?.type === 'required' && <p className='text-red-600 pl-3 mt-1' role="alert">Password field is required</p>}
                         {errors.password?.type === 'minLength' && <p className='text-red-600 pl-3 mt-1' role="alert">Password minimum 6 character</p>}
                         {errors.password?.type === 'pattern' && <p role="alert" className='text-red-600'>Password must have one Uppercase one lowercase one number one special characters </p>}
                     </div>
                     <div className='mb-3'>
+                      <div className='relative'>
                       <input 
-                            type="password" 
+                            type={confirmPassword ? "text":"password"}
                             name='confirm_password' 
                             id='confirm_password' 
                             {...register("confirm_password",{required: true})}
                             placeholder="Confirm Password"
                             className="bg-transparent px-5 py-3 outline-none placeholder-white border border-white rounded-full w-full" 
                         />
+                         <button onClick={()=>setConfirmPassword(password=>!password)} className='absolute top-1/3 right-6 text-xl'>
+                              <FaEye></FaEye>
+                        </button>
+                      </div>
                         {errors.confirm_password?.type === 'required' && <p className='text-red-600 pl-3 mt-1' role="alert">Confirm Password field is required</p>}
                     </div>
                     <div className='mb-3'>
