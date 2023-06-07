@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 
 const Instructors = () => {
 
-
   return (
     <div>
 

@@ -4,16 +4,25 @@ import { AuthContext } from '../../../context/AuthProvider'
 
 const Header = () => {  
   
-  const {user, userLogOut} = useContext(AuthContext)
+  const {user, logOut} = useContext(AuthContext)
+  const handleUserLogOut =()=>{
+    logOut()
+    .then((res)=>{
+      const user = res.user;
+      console.log(user)
+    })
+    .catch((err)=>{
+      console.log(err.message)
+    })
+  }
   
   const navMenu =<>
   <li><Link className='text-lg font-medium' to={`/`}>Home</Link></li>
   <li><Link className='text-lg font-medium' to={`/instructors`}>Instructors</Link></li>
   <li><Link className='text-lg font-medium' to={`/classes`}>Classes</Link></li>
-  <li><Link className='text-lg font-medium' to={`/login`}>Loin</Link></li>
   <li>
         {
-          user ? <Link className='text-lg font-medium rounded-full inline-block px-5 border' onClick={userLogOut}>LogOut</Link>:
+          user ? <Link className='text-lg font-medium rounded-full inline-block px-5 border' onClick={handleUserLogOut}>LogOut</Link>:
           <Link className='text-lg font-medium rounded-full inline-block px-5 border' to={`/login`}>Login</Link>
         }
       </li>
