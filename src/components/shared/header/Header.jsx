@@ -1,21 +1,27 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom/dist'
+import { AuthContext } from '../../../context/AuthProvider'
 
 const Header = () => {  
   
-  //const {user} = useContext(Authco)
+  const {user, userLogOut} = useContext(AuthContext)
   
   const navMenu =<>
   <li><Link className='text-lg font-medium' to={`/`}>Home</Link></li>
-  <li><Link className='text-lg font-medium' to={`/`}>Instructors</Link></li>
-  <li><Link className='text-lg font-medium' to={`/`}>Classes</Link></li>
-  <li><Link className='text-lg font-medium' to={`/`}>Secret</Link></li>
+  <li><Link className='text-lg font-medium' to={`/instructors`}>Instructors</Link></li>
+  <li><Link className='text-lg font-medium' to={`/classes`}>Classes</Link></li>
   <li><Link className='text-lg font-medium' to={`/login`}>Loin</Link></li>
+  <li>
+        {
+          user ? <Link className='text-lg font-medium rounded-full inline-block px-5 border' onClick={userLogOut}>LogOut</Link>:
+          <Link className='text-lg font-medium rounded-full inline-block px-5 border' to={`/login`}>Login</Link>
+        }
+      </li>
 </>
 
   return (
     <div>
-      <div className="navbar fixed z-10 bg-opacity-30 bg-base-100 text-black px-10">
+      <div className="navbar fixed z-10 bg-opacity-60 bg-base-100 text-black px-10">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
