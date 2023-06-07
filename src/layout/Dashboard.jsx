@@ -1,8 +1,13 @@
 import React from 'react'
+import AddAClass from '../pages/dashboards/instructor/addAClass/AddAClass'
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <div>
+        <div>
+            <AddAClass></AddAClass>
+        </div>
+    </div>
   )
 }
 

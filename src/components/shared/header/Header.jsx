@@ -20,6 +20,7 @@ const Header = () => {
   <li><Link className='text-lg font-medium' to={`/`}>Home</Link></li>
   <li><Link className='text-lg font-medium' to={`/instructors`}>Instructors</Link></li>
   <li><Link className='text-lg font-medium' to={`/classes`}>Classes</Link></li>
+  <li><Link className='text-lg font-medium' to={`/dashboard`}>Dashboard</Link></li>
   <li>
         {
           user ? <Link className='text-lg font-medium rounded-full inline-block px-5 border' onClick={handleUserLogOut}>LogOut</Link>:
