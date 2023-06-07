@@ -5,17 +5,24 @@ import { useForm } from 'react-hook-form';
 import { FaEye } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import SocialLogin from '../../components/shared/socialLogin/SocialLogin';
+import Swal from 'sweetalert2';
 const bgImage =`https://img.freepik.com/free-photo/sports-tools_53876-138077.jpg?w=900&t=st=1686065798~exp=1686066398~hmac=49de08e1ec1392f4b6527388784cb99430c4a629bb8e5b18a72c65a06e3e6923`
 
 const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const {createUserUsingEmail, userProfileUpdate} = useContext(AuthContext)
   const [confirmPassword, setConfirmPassword] = useState(false);
-  const {createUserUsingEmail} = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
+
     const onSubmit = data => {
+      userProfileUpdate(data.name, data.photoURL)
       console.log(data)
       if(data.password !== data.confirm_password){
-       return alert("password not matching please try again")
+       Swal.fire(
+        'Password',
+        'Password not matching please try again',
+        'error'
+      )
       }else{
         createUserUsingEmail(data.email, data.password)
         .then((res)=>{
@@ -110,13 +117,13 @@ const Registration = () => {
                     <div className='mb-3'>
                       <input 
                             type="text" 
-                            name='image' 
-                            id='image' 
-                            {...register("image",{required: true})}
+                            name='photoURL' 
+                            id='photoURL' 
+                            {...register("photoURL",{required: true})}
                             placeholder="Enter your Photo URL"
                             className="bg-transparent px-5 py-3 outline-none placeholder-white border border-white rounded-full w-full" 
                         />
-                        {errors.image?.type === 'required' && <p className='text-red-600 pl-3 mt-1' role="alert">Photo field is required</p>}
+                        {errors.photoURL?.type === 'required' && <p className='text-red-600 pl-3 mt-1' role="alert">Photo field is required</p>}
                     </div>
                     <input 
                           className='py-2 block w-full px-10 rounded-full mt-5 cursor-pointer text-base text-white font-medium glass' 

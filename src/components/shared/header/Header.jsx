@@ -5,6 +5,7 @@ import logo from '../../../assets/logo.png'
 const Header = () => {  
   
   const {user, logOut} = useContext(AuthContext)
+  console.log(user)
   const handleUserLogOut =()=>{
     logOut()
     .then((res)=>{
@@ -25,6 +26,13 @@ const Header = () => {
       {
         user ? <Link className='text-base font-medium bg-[#05F3FF] rounded-full inline-block px-5' onClick={handleUserLogOut}>LogOut</Link>:
         <Link className='text-base bg-[#05F3FF] font-medium rounded-full inline-block px-5' to={`/login`}>Login</Link>
+      }
+  </li>
+  <li>
+      {user && 
+          <div className="tooltip" data-tip={`${user?.displayName}`}>
+                <img className='w-10 h-10 rounded-full cursor-pointer' src={user?.photoURL} alt="" />
+          </div>
       }
   </li>
 </>
