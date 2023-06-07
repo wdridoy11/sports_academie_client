@@ -23,6 +23,7 @@ const Classes = () => {
       )
     }
   }
+  
   return (
     <div>
       <Cover coverImg={coverImage} title="Classes"></Cover>
