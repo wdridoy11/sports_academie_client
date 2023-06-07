@@ -17,16 +17,16 @@ const Header = () => {
   }
   
   const navMenu =<>
-  <li><Link className='text-lg font-medium' to={`/`}>Home</Link></li>
-  <li><Link className='text-lg font-medium' to={`/instructors`}>Instructors</Link></li>
-  <li><Link className='text-lg font-medium' to={`/classes`}>Classes</Link></li>
-  <li><Link className='text-lg font-medium' to={`/dashboard`}>Dashboard</Link></li>
+  <li><Link className='text-base font-medium' to={`/`}>Home</Link></li>
+  <li><Link className='text-base font-medium' to={`/instructors`}>Instructors</Link></li>
+  <li><Link className='text-base font-medium' to={`/classes`}>Classes</Link></li>
+  <li><Link className='text-base font-medium' to={`/dashboard`}>Dashboard</Link></li>
   <li>
-        {
-          user ? <Link className='text-lg font-medium rounded-full inline-block px-5 border' onClick={handleUserLogOut}>LogOut</Link>:
-          <Link className='text-lg font-medium rounded-full inline-block px-5 border' to={`/login`}>Login</Link>
-        }
-      </li>
+      {
+        user ? <Link className='text-base font-medium bg-[#05F3FF] rounded-full inline-block px-5' onClick={handleUserLogOut}>LogOut</Link>:
+        <Link className='text-base bg-[#05F3FF] font-medium rounded-full inline-block px-5' to={`/login`}>Login</Link>
+      }
+  </li>
 </>
 
   return (
