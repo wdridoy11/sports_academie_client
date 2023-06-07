@@ -23,18 +23,19 @@ const Header = () => {
   <li><Link className='text-base font-medium' to={`/classes`}>Classes</Link></li>
   <li><Link className='text-base font-medium' to={`/dashboard`}>Dashboard</Link></li>
   <li>
-      {
-        user ? <Link className='text-base font-medium bg-[#05F3FF] rounded-full inline-block px-5' onClick={handleUserLogOut}>LogOut</Link>:
-        <Link className='text-base bg-[#05F3FF] font-medium rounded-full inline-block px-5' to={`/login`}>Login</Link>
-      }
-  </li>
-  <li>
       {user && 
           <div className="tooltip" data-tip={`${user?.displayName}`}>
                 <img className='w-10 h-10 rounded-full cursor-pointer' src={user?.photoURL} alt="" />
           </div>
       }
   </li>
+  <li>
+      {
+        user ? <Link className='text-base font-medium bg-[#05F3FF] rounded-full inline-block px-5' onClick={handleUserLogOut}>LogOut</Link>:
+        <Link className='text-base font-medium bg-[#05F3FF] rounded-full inline-block px-5' to={`/login`}>Login</Link>
+      }
+  </li>
+
 </>
 
   return (
@@ -52,7 +53,7 @@ const Header = () => {
             </ul>
           </div>
           <Link className='text-center'>
-              <img className='w-14 block mx-auto' src={logo} alt="" />
+              <img className='w-14 block mx-auto' src={logo} alt="Logo" />
               <h3 className='text-xl font-semibold'>Sports academies</h3>
           </Link>
         </div>

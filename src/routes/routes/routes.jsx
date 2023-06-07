@@ -1,14 +1,17 @@
 import React from 'react'
 import { createBrowserRouter } from 'react-router-dom'
+// import pages
 import Main from '../../layout/Main'
-import Home from '../../pages/home/home/Home'
 import Login from '../../pages/login/Login'
-import Registration from '../../pages/registration/Registration'
-import Instructors from '../../pages/instructors/Instructors'
-import Classes from '../../pages/classes/Classes'
+import Home from '../../pages/home/home/Home'
 import Dashboard from '../../layout/Dashboard'
-import AddClass from '../../pages/dashboards/instructor/addClass/AddClass'
+import Classes from '../../pages/classes/Classes'
+import Instructors from '../../pages/instructors/Instructors'
+import Registration from '../../pages/registration/Registration'
 import MyClass from '../../pages/dashboards/instructor/myClass/MyClass'
+import AddClass from '../../pages/dashboards/instructor/addClass/AddClass'
+import ManageUser from '../../pages/dashboards/admin/manageUser/ManageUser'
+import ManageClass from '../../pages/dashboards/admin/manageClass/ManageClass'
 
 const router=createBrowserRouter([
     {
@@ -48,7 +51,15 @@ const router=createBrowserRouter([
             {
                 path:"my_class",
                 element:<MyClass></MyClass>
-            }
+            },
+            {
+                path:"Manage_class",
+                element:<ManageClass></ManageClass>
+            },
+            {
+                path:"Manage_user",
+                element:<ManageUser></ManageUser>
+            },
         ]
     }
 ])
