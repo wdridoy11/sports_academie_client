@@ -4,7 +4,8 @@ import logo from '../../../assets/logo.png'
 import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
-    <div className='py-20 bg-slate-200'>
+    <div>
+      <div className='py-20 bg-slate-200'>
       <div className='container mx-auto px-5'>
         <div className='grid md:grid-cols-3'>
             <div>
@@ -41,6 +42,10 @@ const Footer = () => {
                 </div>
             </div>
         </div>
+      </div>
+      </div>
+      <div className='bg-black text-white py-5 text-center'>
+          <p className='text-lg font-normal'>Copyright © 2023 | Sports academies</p>
       </div>
     </div>
   )
