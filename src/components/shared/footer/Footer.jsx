@@ -11,7 +11,7 @@ const Footer = () => {
             <div>
               <img className='w-16 h-16 object-cover' src={logo} alt="logo" />
               <h3 className='text-xl font-semibold'>Sports academies</h3>
-              <p>Worlds best Sports academies</p>
+              <p>California, USA Road,450</p>
             </div>
             <div>
               <h3 className='text-2xl font-semibold mb-4'>Contact Us</h3>
