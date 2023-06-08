@@ -9,7 +9,7 @@ const Error = () => {
                 <img src={errorImage} alt="error page" />
                 <h1 className='text-7xl font-bold text-black mb-1'>404</h1>
                 <h3 className='text-4xl font-semibold text-black mb-4'>Page Not Found!</h3>
-                <Link className='px-7 py-2 bg-[#05F3FF] text-white rounded-md font-semibold text-base mt-5'>Back to Home Page</Link>
+                <Link to={'/'} className='px-7 py-2 bg-[#05F3FF] text-white rounded-md font-semibold text-base mt-5'>Back to Home Page</Link>
             </div>
         </div>
     </div>
