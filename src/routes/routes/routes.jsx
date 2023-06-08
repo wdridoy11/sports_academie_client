@@ -12,6 +12,7 @@ import MyClass from '../../pages/dashboards/instructor/myClass/MyClass'
 import AddClass from '../../pages/dashboards/instructor/addClass/AddClass'
 import ManageUser from '../../pages/dashboards/admin/manageUser/ManageUser'
 import ManageClass from '../../pages/dashboards/admin/manageClass/ManageClass'
+import Error from '../../pages/error/Error'
 
 const router=createBrowserRouter([
     {
@@ -61,6 +62,10 @@ const router=createBrowserRouter([
                 element:<ManageUser></ManageUser>
             },
         ]
+    },
+    {
+        path:"*",
+        element:<Error></Error>
     }
 ])
 
