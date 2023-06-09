@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link, Outlet } from 'react-router-dom'
 import { useContext } from 'react'
+import { Link, Outlet } from 'react-router-dom'
 import { AuthContext } from '../context/AuthProvider'
 
 const Dashboard = () => {
@@ -13,7 +13,6 @@ const Dashboard = () => {
             <div className="drawer-content flex flex-col items-center justify-center">
                 <Outlet></Outlet>
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
-
             </div>
             <div className="drawer-side bg-[#EEEDED]">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
@@ -27,7 +26,7 @@ const Dashboard = () => {
                     <Link className='text-base font-medium mb-3' to={`/classes`}>Classes</Link>
                 </ul>
             </div>
-        </div>  
+          </div>  
         </div>
     </div>
   )

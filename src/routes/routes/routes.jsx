@@ -2,6 +2,7 @@ import React from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 // import pages
 import Main from '../../layout/Main'
+import Error from '../../pages/error/Error'
 import Login from '../../pages/login/Login'
 import Home from '../../pages/home/home/Home'
 import Dashboard from '../../layout/Dashboard'
@@ -12,7 +13,6 @@ import MyClass from '../../pages/dashboards/instructor/myClass/MyClass'
 import AddClass from '../../pages/dashboards/instructor/addClass/AddClass'
 import ManageUser from '../../pages/dashboards/admin/manageUser/ManageUser'
 import ManageClass from '../../pages/dashboards/admin/manageClass/ManageClass'
-import Error from '../../pages/error/Error'
 
 const router=createBrowserRouter([
     {
