@@ -18,9 +18,9 @@ const Dashboard = () => {
             <div className="drawer-side bg-[#EEEDED]">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80">
-                    <Link className='text-lg font-medium mb-3' to={'/dashboard/add_class'}>Add Class</Link>
-                    <Link className='text-lg font-medium mb-3' to={'/dashboard/my_class'}>my_class</Link>
-                    <Link className='text-lg font-medium mb-3' to={'/dashboard/Manage_user'}>Manage user</Link>
+                    <Link className='text-base font-medium mb-3' to={'/dashboard/add_class'}>Add Class</Link>
+                    <Link className='text-base font-medium mb-3' to={'/dashboard/my_class'}>my_class</Link>
+                    <Link className='text-base font-medium mb-3' to={'/dashboard/Manage_user'}>Manage user</Link>
                     <div className="divider"></div> 
                     <Link className='text-base font-medium mb-3' to={'/'}>Home</Link>
                     <Link className='text-base font-medium mb-3' to={`/instructors`}>Instructors</Link>
