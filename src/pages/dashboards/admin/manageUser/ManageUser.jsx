@@ -1,12 +1,14 @@
 import React, { useContext } from 'react'
-import { FaTrash, FaUserShield, FaUsers } from 'react-icons/fa'
 import { useEffect, useState } from 'react';
+import { FaTrash, FaUserShield, FaUsers } from 'react-icons/fa'
 import { AuthContext } from '../../../../context/AuthProvider'
+import Swal from 'sweetalert2';
 
 const ManageUser = () => {
 
   const {user} = useContext(AuthContext);
   const [users, setUsers] = useState([]);
+
   // manage user data get
   useEffect(()=>{
     fetch(`http://localhost:5000/users`)
@@ -15,6 +17,37 @@ const ManageUser = () => {
       setUsers(data)
     })
   },[])
+
+  const handleDeleteToy=(id)=>{
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You will delete your toy!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/users/${id}`,{
+          method:"DELETE",
+          headers:{
+            "content-type":"application/json"
+          }
+        })
+        .then((res)=>res.json())
+        .then((data)=>{
+          if(data.deletedCount>0){
+            Swal.fire("Deleted!", "User deleted successfully", "success");
+          }
+          const remaining = users.filter((user)=>user._id !== id);
+          setUsers(remaining);
+        })
+      }
+    })
+  }
+
+
 
   return (
     <div className="w-full px-5">
@@ -26,7 +59,7 @@ const ManageUser = () => {
                 <tr>
                   <th>#</th>
                   <th>Image</th>
-                  <th>Name</th>
+                  <th>Info</th>
                   <th>Roll</th>
                   <th>Action</th>
                 </tr>
@@ -58,7 +91,7 @@ const ManageUser = () => {
                          }
                       </td>
                       <th>
-                         <button className='bg-red-600 p-3 ml-1 rounded-md'>
+                         <button onClick={()=>handleDeleteToy(userInfo._id)} className='bg-red-600 p-3 ml-1 rounded-md'>
                            <FaTrash className='text-lg text-white'></FaTrash>
                          </button>
                       </th>

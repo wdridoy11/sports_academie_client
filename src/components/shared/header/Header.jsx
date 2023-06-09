@@ -5,7 +5,7 @@ import { AuthContext } from '../../../context/AuthProvider'
 const Header = () => {  
   
   const {user, logOut} = useContext(AuthContext)
-  console.log(user)
+  // landle logout
   const handleUserLogOut =()=>{
     logOut()
     .then((res)=>{
@@ -25,7 +25,7 @@ const Header = () => {
   <li>
       {user && 
           <div className="tooltip" data-tip={`${user?.displayName}`}>
-                <img className='w-10 h-10 rounded-full cursor-pointer' src={user?.photoURL} alt="" />
+                <img className='w-10 h-10 rounded-full cursor-pointer border border-white' src={user?.photoURL} alt="" />
           </div>
       }
   </li>
