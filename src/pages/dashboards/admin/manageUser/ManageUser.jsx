@@ -112,15 +112,14 @@ const ManageUser = () => {
                         <p>{userInfo.email}</p>
                       </td>
                       <td>
-                       
                        {userInfo.role === "admin" ? "admin":<>
-                          <button onClick={()=>handleMakeAdmin(userInfo)} className='bg-[#05F3FF] p-3 ml-1 rounded-md' title='Admin'>
+                          <button onClick={()=>handleMakeAdmin(userInfo)} className='bg-[#05F3FF] p-3 mr-2 rounded-md' title='Admin'>
                               <FaUserShield className='text-xl'></FaUserShield>
                           </button>
                        </>
                          }
                        {userInfo.role === "instructor" ? "instructor":<>
-                          <button onClick={()=>handleMakeInstructor(userInfo)} className='bg-[#05F3FF] p-3 ml-1 rounded-md' title='Instructor '>
+                          <button onClick={()=>handleMakeInstructor(userInfo)} className='bg-[#05F3FF] p-3 ml-2 rounded-md' title='Instructor '>
                               <FaUsers className='text-xl'></FaUsers>
                           </button>
                        </>
