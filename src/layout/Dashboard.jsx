@@ -20,6 +20,7 @@ const Dashboard = () => {
                     <Link className='text-base font-medium mb-3' to={'/dashboard/add_class'}>Add Class</Link>
                     <Link className='text-base font-medium mb-3' to={'/dashboard/my_class'}>my_class</Link>
                     <Link className='text-base font-medium mb-3' to={'/dashboard/Manage_user'}>Manage user</Link>
+                    <Link className='text-base font-medium mb-3' to={'/dashboard/my_selecte_class'}>My Selecte Class</Link>
                     <div className="divider"></div> 
                     <Link className='text-base font-medium mb-3' to={'/'}>Home</Link>
                     <Link className='text-base font-medium mb-3' to={`/instructors`}>Instructors</Link>
