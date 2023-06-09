@@ -19,6 +19,7 @@ const Dashboard = () => {
                 <ul className="menu p-4 w-80">
                     <Link className='text-lg font-medium mb-3' to={'/dashboard/add_class'}>Add Class</Link>
                     <Link className='text-lg font-medium' to={'/dashboard/my_class'}>my_class</Link>
+                    <Link className='text-lg font-medium' to={'/dashboard/Manage_user'}>Manage user</Link>
                 </ul>
             </div>
         </div>  
