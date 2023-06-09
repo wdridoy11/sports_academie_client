@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import Cover from '../../components/shared/cover/Cover'
-import { FaUserCircle } from 'react-icons/fa';
-import { useContext } from 'react';
-import { AuthContext } from '../../context/AuthProvider';
 import Swal from 'sweetalert2';
+import { useContext } from 'react';
+import { FaUserCircle } from 'react-icons/fa';
+import Cover from '../../components/shared/cover/Cover'
+import { AuthContext } from '../../context/AuthProvider';
 const coverImage = `https://img.freepik.com/free-photo/empty-classroom-due-coronavirus-pandemic_637285-8845.jpg?w=1380&t=st=1686107959~exp=1686108559~hmac=416fd2d9a871e381f690c10bd21f2ce1ae9be581a09438a4a693a396d7e654bc`
 
 const Classes = () => {
+
   const {user} = useContext(AuthContext);
   const [classes, setClasses] = useState([]);
 
@@ -19,8 +20,8 @@ const Classes = () => {
     })
   },[])
 
-
-  const handleLoginCheck=()=>{
+  // handle login 
+  const handleLoginCheck=(classInfo)=>{
     if(!user){
       Swal.fire(
         'Login Please',
@@ -28,20 +29,28 @@ const Classes = () => {
         'error'
       )
     }else{
+      // selects data post
       fetch(`http://localhost:5000/selects`,{
         method:"POST",
         headers:{
           "content-type":"application/json"
+        },
+        body:JSON.stringify(classInfo)
+      })
+      .then((res)=>res.json())
+      .then((data)=>{
+        if(data.insertedId){
+          Swal.fire(
+            'Congratulation',
+            'Course selecting successful',
+            'success'
+          )
         }
       })
-      Swal.fire(
-        'Congratulation',
-        'Course selecting successful',
-        'success'
-      )
     }
   }
-  console.log(classes)
+
+
   return (
     <div>
       <Cover coverImg={coverImage} title="Classes"></Cover>
@@ -65,7 +74,7 @@ const Classes = () => {
                               <p className='text-xl font-bold text-black'>${classInfo.price}</p>
                           </div>
                       </div>
-                      <button onClick={handleLoginCheck} className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button>
+                      <button onClick={()=>handleLoginCheck(classInfo)} className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button>
                   </div>
                 </div>             
               </>)}
