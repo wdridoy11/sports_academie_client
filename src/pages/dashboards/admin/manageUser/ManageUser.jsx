@@ -18,10 +18,45 @@ const ManageUser = () => {
     })
   },[])
 
+  // handle make admin
+  const handleMakeAdmin=(user)=>{
+    fetch(`http://localhost:5000/users/admin/${user._id}`,{
+      method:"PATCH",
+    })
+    .then((res)=>res.json())
+    .then((data)=>{
+      if(data.matchedCount>0){
+        Swal.fire(
+          'Congratulation!',
+          `${user.name} now admit`,
+          'success'
+        )
+      }
+    })
+  }
+
+  // handle make Instructor
+  const handleMakeInstructor=(user)=>{
+    fetch(`http://localhost:5000/users/instructor/${user._id}`,{
+      method:"PATCH",
+    })
+    .then((res)=>res.json())
+    .then((data)=>{
+      if(data.matchedCount>0){
+        Swal.fire(
+          'Congratulation!',
+          `${user.name} now instructor`,
+          'success'
+        )
+      }
+    })
+  }
+
+  // handle user delete
   const handleDeleteToy=(id)=>{
     Swal.fire({
       title: 'Are you sure?',
-      text: "You will delete your toy!",
+      text: "You will delete your user!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -47,14 +82,11 @@ const ManageUser = () => {
     })
   }
 
-
-
   return (
     <div className="w-full px-5">
       <div>
         <div className="overflow-x-auto">
             <table className="table table-zebra w-full">
-              {/* head */}
               <thead>
                 <tr>
                   <th>#</th>
@@ -80,11 +112,15 @@ const ManageUser = () => {
                         <p>{userInfo.email}</p>
                       </td>
                       <td>
-                       {user.role === "admin" ? "admin":<>
-                          <button className='bg-[#05F3FF] p-3 ml-1 rounded-md'>
+                       
+                       {userInfo.role === "admin" ? "admin":<>
+                          <button onClick={()=>handleMakeAdmin(userInfo)} className='bg-[#05F3FF] p-3 ml-1 rounded-md' title='Admin'>
                               <FaUserShield className='text-xl'></FaUserShield>
                           </button>
-                          <button className='bg-[#05F3FF] p-3 ml-1 rounded-md'>
+                       </>
+                         }
+                       {userInfo.role === "instructor" ? "instructor":<>
+                          <button onClick={()=>handleMakeInstructor(userInfo)} className='bg-[#05F3FF] p-3 ml-1 rounded-md' title='Instructor '>
                               <FaUsers className='text-xl'></FaUsers>
                           </button>
                        </>
