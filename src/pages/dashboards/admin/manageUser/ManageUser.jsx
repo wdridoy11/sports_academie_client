@@ -1,9 +1,21 @@
 import React, { useContext } from 'react'
-import { AuthContext } from '../../../../context/AuthProvider'
 import { FaTrash } from 'react-icons/fa'
+import { useEffect, useState } from 'react';
+import { AuthContext } from '../../../../context/AuthProvider'
 
 const ManageUser = () => {
-  const {user} = useContext(AuthContext)
+
+  const {user} = useContext(AuthContext);
+  const [users, setUsers] = useState([]);
+  useEffect(()=>{
+    fetch(`http://localhost:5000/users`)
+    .then((res)=>res.json())
+    .then((data)=>{
+      setUsers(data)
+    })
+  },[])
+  console.log(users)
+
   return (
     <div>
       <div>
