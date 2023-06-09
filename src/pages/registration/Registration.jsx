@@ -1,18 +1,19 @@
 import React, { useContext, useState } from 'react'
-import { AuthContext } from '../../context/AuthProvider';
-import loginImg from '../../assets/login.png'
-import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 import { FaEye } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import loginImg from '../../assets/login.png'
+import { AuthContext } from '../../context/AuthProvider';
 import SocialLogin from '../../components/shared/socialLogin/SocialLogin';
-import Swal from 'sweetalert2';
 const bgImage =`https://img.freepik.com/free-photo/sports-tools_53876-138077.jpg?w=900&t=st=1686065798~exp=1686066398~hmac=49de08e1ec1392f4b6527388784cb99430c4a629bb8e5b18a72c65a06e3e6923`
 
 const Registration = () => {
+
   const [showPassword, setShowPassword] = useState(false);
   const {createUserUsingEmail, userProfileUpdate} = useContext(AuthContext)
   const [confirmPassword, setConfirmPassword] = useState(false);
-    const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = data => {
       userProfileUpdate(data.name, data.photoURL)
@@ -24,6 +25,17 @@ const Registration = () => {
         'error'
       )
       }else{
+
+        fetch(`http://localhost:5000/users`,{
+          method:"POST",
+          headers:{
+            'content-type':"application/json"
+          },
+          body:JSON.stringify(data)
+        })
+        .then((res)=>res.json())
+        .then((data)=>console.log(data))
+        // create user
         createUserUsingEmail(data.email, data.password)
         .then((res)=>{
           const user = res.user;

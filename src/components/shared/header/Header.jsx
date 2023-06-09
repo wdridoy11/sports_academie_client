@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom/dist'
-import { AuthContext } from '../../../context/AuthProvider'
 import logo from '../../../assets/logo.png'
+import { AuthContext } from '../../../context/AuthProvider'
 const Header = () => {  
   
   const {user, logOut} = useContext(AuthContext)
@@ -21,7 +21,7 @@ const Header = () => {
   <li><Link className='text-base font-medium' to={`/`}>Home</Link></li>
   <li><Link className='text-base font-medium' to={`/instructors`}>Instructors</Link></li>
   <li><Link className='text-base font-medium' to={`/classes`}>Classes</Link></li>
-  <li><Link className='text-base font-medium' to={`/dashboard`}>Dashboard</Link></li>
+  <li>{user && <Link className='text-base font-medium' to={`/dashboard`}>Dashboard</Link>}</li>
   <li>
       {user && 
           <div className="tooltip" data-tip={`${user?.displayName}`}>
