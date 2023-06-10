@@ -43,7 +43,6 @@ const Registration = () => {
       }
     };
 
-
   return (
     <div className="hero min-h-screen" style={{ backgroundImage: `url(${bgImage})`}}>
     <div className="hero-overlay bg-opacity-30"></div>

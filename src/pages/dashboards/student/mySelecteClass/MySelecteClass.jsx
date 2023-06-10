@@ -48,27 +48,26 @@ const MySelecteClass = () => {
       }
     })
   }
-
-
+  
   return (
     <div>
       <div>
         <div className='grid grid-cols-3 gap-5'>
           {selects && selects.map((classes)=><div>
             <div className='rounded-lg'>
-              <img className='w-full h-[300px] object-cover rounded-t-md' src={classes.class_image} alt="Sports_image" />
+              <img className='w-full h-[300px] object-cover rounded-t-md' src={classes.classInfo.class_image} alt="Sports_image" />
               <div className='p-4 border rounded-b-lg'>
-                <h3 className='text-2xl font-semibold mb-4'>{classes.class_name}</h3>
+                <h3 className='text-2xl font-semibold mb-4'>{classes.classInfo.class_name}</h3>
                 <div className='flex justify-between'>
                   <div className='flex gap-2 items-center'>
-                    <img className='w-7 h-7 object-cover rounded-full' src={classes.class_image} alt="Instructors" />
-                    <p className='text-base font-normal text-[#062015]'>{classes.instructor_name}</p>
+                    <img className='w-7 h-7 object-cover rounded-full' src={classes.classInfo.class_image} alt="Instructors" />
+                    <p className='text-base font-normal text-[#062015]'>{classes.classInfo.instructor_name}</p>
                   </div>
                   <div>
-                    <p className='text-xl font-bold text-black'>${classes.price}</p>
+                    <p className='text-xl font-bold text-black'>${classes.classInfo.price}</p>
                   </div>
                 </div>
-                    <button onClick={()=>handleRemoveSelects(classes._id)} className='px-7 py-2 bg-red-600 text-white rounded-md font-semibold text-base mt-5 mr-3'>Remove</button>
+                    <button onClick={()=>handleRemoveSelects(classes.classInfo._id)} className='px-7 py-2 bg-red-600 text-white rounded-md font-semibold text-base mt-5 mr-3'>Remove</button>
                     <Link to={'/dashboard/payment'} className='px-7 py-2 bg-[#05F3FF] text-black rounded-md font-semibold text-base mt-5'>Pay Now</Link>
                 </div>
              </div> 
