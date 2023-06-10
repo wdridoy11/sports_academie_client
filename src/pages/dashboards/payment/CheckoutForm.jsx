@@ -1,21 +1,35 @@
 import React from 'react'
-import { CardElement, lements, useElements, useStripe} from '@stripe/react-stripe-js'
+import { CardElement, useElements, useStripe} from '@stripe/react-stripe-js'
 import { useState } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../../../context/AuthProvider';
+import { useEffect } from 'react';
 
-const CheckoutForm = () => {
+const CheckoutForm = ({price}) => {
     const stripe = useStripe();
     const elements = useElements();
     const {user} = useContext(AuthContext);
     const [cardError, setCardError] = useState("");
     const [clientSecret,setClientSecret] = useState("");
 
+    // useEffect(()=>{
+    //     fetch(`http://localhost:5000/create_payment_intent`,{price},{
+    //         method:"POST",
+    //         headers:{
+    //             "content-type":"application/json"
+    //         },
+    //     })
+    //     .then((res)=>{
+    //         console.log()
+    //         setClientSecret(res)
+    //     })
+    // },[])
+
     const handleSubmit=async(event)=>{
 
         event.preventDefault();
         if(!stripe || !elements){
-            return
+            return;
         }
 
         const card = elements.getElement(CardElement);
@@ -74,7 +88,7 @@ const CheckoutForm = () => {
               },
             }}
           />
-          <button type="submit" disabled={!stripe || clientSecret}>Pay</button>
+          <button className='text-base font-medium bg-[#05F3FF] rounded-md inline-block py-2 px-5 mt-4' type="submit" disabled={!stripe || clientSecret}>Pay</button>
         </form>
         {cardError && <p className='text-red-600'>{cardError}</p>}
     </div>
