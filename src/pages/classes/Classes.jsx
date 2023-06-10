@@ -47,6 +47,7 @@ const Classes = () => {
           )
         }
       })
+      console.log(classInfo)
     }
   }
 

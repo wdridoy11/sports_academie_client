@@ -53,7 +53,7 @@ const ManageUser = () => {
   }
 
   // handle user delete
-  const handleDeleteToy=(id)=>{
+  const handleDeleteUser=(id)=>{
     Swal.fire({
       title: 'Are you sure?',
       text: "You will delete your user!",
@@ -103,7 +103,7 @@ const ManageUser = () => {
                       <td>
                         <div className="flex items-center space-x-3">
                             <div className="mask mask-squircle w-12 h-12">
-                              <img src={userInfo.photoURL} alt="Avatar Tailwind CSS Component" />
+                              <img className='w-12 h-12 object-cover' src={userInfo.photoURL} alt="User" />
                             </div>
                         </div>
                       </td>
@@ -126,7 +126,7 @@ const ManageUser = () => {
                          }
                       </td>
                       <th>
-                         <button onClick={()=>handleDeleteToy(userInfo._id)} className='bg-red-600 p-3 ml-1 rounded-md'>
+                         <button onClick={()=>handleDeleteUser(userInfo._id)} className='bg-red-600 p-3 ml-1 rounded-md'>
                            <FaTrash className='text-lg text-white'></FaTrash>
                          </button>
                       </th>
