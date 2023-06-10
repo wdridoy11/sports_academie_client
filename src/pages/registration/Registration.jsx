@@ -11,13 +11,11 @@ const bgImage =`https://img.freepik.com/free-photo/sports-tools_53876-138077.jpg
 const Registration = () => {
 
   const [showPassword, setShowPassword] = useState(false);
-  const {createUserUsingEmail, userProfileUpdate} = useContext(AuthContext)
+  const {createUserUsingEmail, updateUserProfile} = useContext(AuthContext)
   const [confirmPassword, setConfirmPassword] = useState(false);
   const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = data => {
-      userProfileUpdate(data.name, data.photoURL)
-      console.log(data)
       if(data.password !== data.confirm_password){
        Swal.fire(
         'Password',
@@ -25,7 +23,6 @@ const Registration = () => {
         'error'
       )
       }else{
-
         fetch(`http://localhost:5000/users`,{
           method:"POST",
           headers:{
@@ -39,7 +36,8 @@ const Registration = () => {
         createUserUsingEmail(data.email, data.password)
         .then((res)=>{
           const user = res.user;
-          console.log(user)
+          updateUserProfile(user,data.name,data.photoURL)
+          console.log("user",user)
         })
         .catch((err)=>console.log(err.message))
       }

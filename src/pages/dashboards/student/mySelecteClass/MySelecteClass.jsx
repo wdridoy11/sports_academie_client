@@ -4,10 +4,15 @@ import Swal from 'sweetalert2';
 
 const MySelecteClass = () => {
 
+  const token = localStorage.getItem("access-token")
   const [selects, setSelects] = useState([]);
   // class data load
   useEffect(()=>{
-    fetch(`http://localhost:5000/selects`)
+    fetch(`http://localhost:5000/selects`,{
+      headers:{
+        authorization :  `Bearer ${token}`
+      }
+    })
     .then((res)=>res.json())
     .then((data)=>{
       setSelects(data)
@@ -49,7 +54,7 @@ const MySelecteClass = () => {
     <div>
       <div>
         <div className='grid grid-cols-3 gap-5'>
-          {selects.map((classes)=><div>
+          {selects && selects.map((classes)=><div>
             <div className='rounded-lg'>
               <img className='w-full h-[300px] object-cover rounded-t-md' src={classes.class_image} alt="Sports_image" />
               <div className='p-4 border rounded-b-lg'>
