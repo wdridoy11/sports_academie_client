@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const MySelecteClass = () => {
@@ -63,7 +64,7 @@ const MySelecteClass = () => {
                   </div>
                 </div>
                     <button onClick={()=>handleRemoveSelects(classes._id)} className='px-7 py-2 bg-red-600 text-white rounded-md font-semibold text-base mt-5 mr-3'>Remove</button>
-                    <button className='px-7 py-2 bg-[#05F3FF] text-black rounded-md font-semibold text-base mt-5'>Pay Now</button>
+                    <Link to={'/dashboard/payment'} className='px-7 py-2 bg-[#05F3FF] text-black rounded-md font-semibold text-base mt-5'>Pay Now</Link>
                 </div>
              </div> 
           </div>)}
