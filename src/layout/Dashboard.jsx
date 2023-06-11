@@ -4,9 +4,12 @@ import { AiFillFileAdd } from "react-icons/ai";
 import { useContext } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import { AuthContext } from '../context/AuthProvider'
+import useAdmin from '../hook/useAdmin';
 
 const Dashboard = () => {
   const {user} = useContext(AuthContext);
+  // const isAdmin = 
+  const [isAdmin] = useAdmin();
   return (
     <div>
         <div>
@@ -19,8 +22,12 @@ const Dashboard = () => {
             <div className="drawer-side bg-[#EEEDED]">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80">
-                    <Link className='text-base font-medium mb-3 flex gap-2 items-center' to={'/dashboard/add_class'}>
-                       <AiFillFileAdd></AiFillFileAdd> Add Class</Link>
+                  {isAdmin &&
+                  <Link className='text-base font-medium mb-3 flex gap-2 items-center' to={'/dashboard/add_class'}>
+                  <AiFillFileAdd></AiFillFileAdd> Add Class</Link>
+                  }
+                    {/* <Link className='text-base font-medium mb-3 flex gap-2 items-center' to={'/dashboard/add_class'}>
+                       <AiFillFileAdd></AiFillFileAdd> Add Class</Link> */}
                     <Link className='text-base font-medium mb-3 flex gap-2 items-center' to={'/dashboard/my_class'}>
                         <FaUserTie></FaUserTie> my_class</Link>
                     <Link className='text-base font-medium mb-3 flex gap-2 items-center' to={'/dashboard/Manage_user'}> 
