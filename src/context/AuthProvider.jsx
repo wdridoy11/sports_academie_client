@@ -33,11 +33,16 @@ const AuthProvider = ({children}) => {
     return signOut(auth)
   }
 
-  const userProfileUpdate=(name,photo)=>{
-    return updateProfile(auth.currentUser,{
-      displayName:name,
-      photoURL:photo
-    })
+
+  //user profile update
+  const updateUserProfile=(user,name,photo)=>{
+      updateProfile(user,{
+          displayName:name,
+          photoURL:photo
+      })
+      .then((result)=>console.log(result))
+      .catch((error)=>console.log(error.message))
+
   }
 
   // user login checking
@@ -66,7 +71,7 @@ const AuthProvider = ({children}) => {
     logOut,
     loading,
     loginUser,
-    userProfileUpdate,
+    updateUserProfile,
     createUserUsingEmail,
   }
 

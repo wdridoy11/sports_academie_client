@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 
 const AddClass = () => {
 
-    const {user} = useContext(AuthContext)
+    const {user} = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
@@ -37,9 +37,11 @@ const AddClass = () => {
                         type="text" 
                         name='instructor_name' 
                         id='instructor_name' 
+                        defaultValue={user.displayName}
                         {...register("instructor_name", { required: true})} 
                         placeholder="Instructor Name" 
-                        className="input mb-3 input-bordered w-full" 
+                        className="input mb-3 disabled bg-slate-300 input-bordered w-full" 
+                        readOnly
                     />
                     {errors.instructor_name?.type === 'required' && <p className='text-red-600 mb-2' role="alert">Instructor name is required</p>}
                     <input 

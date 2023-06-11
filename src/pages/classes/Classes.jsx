@@ -10,7 +10,7 @@ const Classes = () => {
 
   const {user} = useContext(AuthContext);
   const [classes, setClasses] = useState([]);
-
+console.log()
   // classes data get from database
   useEffect(()=>{
     fetch(`http://localhost:5000/classes`)
@@ -21,7 +21,8 @@ const Classes = () => {
   },[])
 
   // handle login 
-  const handleLoginCheck=(classInfo)=>{
+  const handleLoginCheck=(classInfo,userEmail)=>{
+    const classAllInfo={classInfo,userEmail }
     if(!user){
       Swal.fire(
         'Login Please',
@@ -35,10 +36,11 @@ const Classes = () => {
         headers:{
           "content-type":"application/json"
         },
-        body:JSON.stringify(classInfo)
+        body:JSON.stringify(classAllInfo)
       })
       .then((res)=>res.json())
       .then((data)=>{
+        console.log(data)
         if(data.insertedId){
           Swal.fire(
             'Congratulation',
@@ -47,7 +49,6 @@ const Classes = () => {
           )
         }
       })
-      console.log(classInfo)
     }
   }
 
@@ -74,7 +75,7 @@ const Classes = () => {
                               <p className='text-xl font-bold text-black'>${classInfo.price}</p>
                           </div>
                       </div>
-                      <button onClick={()=>handleLoginCheck(classInfo)} className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button>
+                      <button onClick={()=>handleLoginCheck(classInfo,user.email)} className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button>
                   </div>
                 </div>             
               </>)}
