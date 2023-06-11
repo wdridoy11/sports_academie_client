@@ -20,11 +20,13 @@ const ManageUser = () => {
 
   // handle make admin
   const handleMakeAdmin=(user)=>{
+    // console.log(user._id)
     fetch(`http://localhost:5000/users/admin/${user._id}`,{
       method:"PATCH",
     })
     .then((res)=>res.json())
     .then((data)=>{
+      console.log(data)
       if(data.matchedCount>0){
         Swal.fire(
           'Congratulation!',
