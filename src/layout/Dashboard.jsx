@@ -1,4 +1,6 @@
 import React from 'react'
+import { FaUsers, FaCheckSquare, FaUserTie} from 'react-icons/fa';
+import { AiFillFileAdd } from "react-icons/ai";
 import { useContext } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import { AuthContext } from '../context/AuthProvider'
@@ -17,10 +19,16 @@ const Dashboard = () => {
             <div className="drawer-side bg-[#EEEDED]">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80">
-                    <Link className='text-base font-medium mb-3' to={'/dashboard/add_class'}>Add Class</Link>
-                    <Link className='text-base font-medium mb-3' to={'/dashboard/my_class'}>my_class</Link>
-                    <Link className='text-base font-medium mb-3' to={'/dashboard/Manage_user'}>Manage user</Link>
-                    <Link className='text-base font-medium mb-3' to={'/dashboard/my_selecte_class'}>My Selecte Class</Link>
+                    <Link className='text-base font-medium mb-3 flex gap-2 items-center' to={'/dashboard/add_class'}>
+                       <AiFillFileAdd></AiFillFileAdd> Add Class</Link>
+                    <Link className='text-base font-medium mb-3 flex gap-2 items-center' to={'/dashboard/my_class'}>
+                        <FaUserTie></FaUserTie> my_class</Link>
+                    <Link className='text-base font-medium mb-3 flex gap-2 items-center' to={'/dashboard/Manage_user'}> 
+                        <FaUsers></FaUsers> Manage user
+                    </Link>
+                    <Link className='text-base font-medium mb-3 flex gap-2 items-center' to={'/dashboard/my_selecte_class'}>
+                       <FaCheckSquare></FaCheckSquare> My Selecte Class 
+                    </Link>
                     <div className="divider"></div> 
                     <Link className='text-base font-medium mb-3' to={'/'}>Home</Link>
                     <Link className='text-base font-medium mb-3' to={`/instructors`}>Instructors</Link>
