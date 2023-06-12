@@ -56,11 +56,11 @@ const router=createBrowserRouter([
                 element:<MyClass></MyClass>
             },
             {
-                path:"Manage_class",
+                path:"manage_class",
                 element:<ManageClass></ManageClass>
             },
             {
-                path:"Manage_user",
+                path:"manage_user",
                 element:<ManageUser></ManageUser>
             },
             {
