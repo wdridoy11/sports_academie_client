@@ -10,7 +10,18 @@ const Classes = () => {
 
   const {user} = useContext(AuthContext);
   const [classes, setClasses] = useState([]);
-console.log()
+  const [users, setUsers] = useState([]);
+
+  useEffect(()=>{
+    fetch(`http://localhost:5000/users`)
+    .then((res)=>res.json())
+    .then((data)=>{
+      const datarole = data.find((userEmail)=>userEmail.email === user.email);
+      setUsers(datarole)
+    })
+  },[])
+
+  // console.log(users.role)
   // classes data get from database
   useEffect(()=>{
     fetch(`http://localhost:5000/classes`)
@@ -51,7 +62,7 @@ console.log()
       })
     }
   }
-
+console.log(users.role)
   return (
     <div>
       <Cover coverImg={coverImage} title="Classes"></Cover>
@@ -75,7 +86,10 @@ console.log()
                               <p className='text-xl font-bold text-black'>${classInfo.price}</p>
                           </div>
                       </div>
-                      <button onClick={()=>handleLoginCheck(classInfo,user.email)} className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button>
+                        {
+                        users && users.role !== "student" ? <button className='px-7 py-2  bg-red-600 text-white rounded-md font-semibold text-base mt-5 opacity-50' disabled>Select</button>:
+                          <button onClick={()=>handleLoginCheck(classInfo,user.email)}  className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button>
+                        }
                   </div>
                 </div>             
               </>)}

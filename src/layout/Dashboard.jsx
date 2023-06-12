@@ -1,9 +1,7 @@
 import React from 'react'
 import { FaUsers, FaCheckSquare, FaUserTie} from 'react-icons/fa';
 import { AiFillFileAdd } from "react-icons/ai";
-import { useContext } from 'react'
 import { Link, Outlet } from 'react-router-dom'
-import { AuthContext } from '../context/AuthProvider'
 import useAdmin from '../hook/useAdmin';
 import useInstructor from '../hook/useInstructor';
 import useStudent from '../hook/useStudent';
