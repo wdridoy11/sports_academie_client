@@ -12,7 +12,7 @@ const Dashboard = () => {
   // const isAdmin = 
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
-  console.log(isInstructor)
+
   return (
     <div>
         <div>
@@ -30,18 +30,30 @@ const Dashboard = () => {
                           <FaUsers></FaUsers> Manage user
                       </Link>
                       <Link className='text-base font-medium mb-3 flex gap-2 items-center' to={'/dashboard/manage_class'}> 
-                          <FaUsers></FaUsers> Manage user
+                          <FaUsers></FaUsers> Manage Classes
                       </Link>
                      </>
                   }
-                  <Link className='text-base font-medium mb-3 flex gap-2 items-center' to={'/dashboard/add_class'}>
-                  <AiFillFileAdd></AiFillFileAdd> Add Class</Link>
-                    <Link className='text-base font-medium mb-3 flex gap-2 items-center' to={'/dashboard/my_class'}>
-                        <FaUserTie></FaUserTie> my_class</Link>
-                    
-                    <Link className='text-base font-medium mb-3 flex gap-2 items-center' to={'/dashboard/my_selecte_class'}>
-                       <FaCheckSquare></FaCheckSquare> My Selecte Class 
+                  {
+                    isInstructor && <>
+                    <Link className='text-base font-medium mb-3 flex gap-2 items-center' to={'/dashboard/add_class'}>
+                       <AiFillFileAdd></AiFillFileAdd> Add Class
                     </Link>
+                    <Link className='text-base font-medium mb-3 flex gap-2 items-center' to={'/dashboard/my_class'}>
+                       <FaUserTie></FaUserTie> my_class
+                    </Link>
+                    </>
+                  }
+                    {
+                      user && <>
+                        <Link className='text-base font-medium mb-3 flex gap-2 items-center' to={'/dashboard/my_selecte_class'}>
+                           <FaCheckSquare></FaCheckSquare> My Selecte Class 
+                        </Link>
+                        <Link className='text-base font-medium mb-3 flex gap-2 items-center' to={'/dashboard/my_enroll_class'}>
+                           <FaCheckSquare></FaCheckSquare> My Enroll Class
+                        </Link>
+                    </>
+                    }
                     <div className="divider"></div> 
                     <Link className='text-base font-medium mb-3' to={'/'}>Home</Link>
                     <Link className='text-base font-medium mb-3' to={`/instructors`}>Instructors</Link>

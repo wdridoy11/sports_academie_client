@@ -15,6 +15,8 @@ import ManageUser from '../../pages/dashboards/admin/manageUser/ManageUser'
 import ManageClass from '../../pages/dashboards/admin/manageClass/ManageClass'
 import MySelecteClass from '../../pages/dashboards/student/mySelecteClass/MySelecteClass'
 import Payment from '../../pages/dashboards/payment/Payment'
+import MyEnrollClass from '../../pages/dashboards/student/myEnrollClass/MyEnrollClass'
+import PrivetRoute from '../privetRoute/PrivetRoute'
 
 const router=createBrowserRouter([
     {
@@ -62,6 +64,10 @@ const router=createBrowserRouter([
             {
                 path:"manage_user",
                 element:<ManageUser></ManageUser>
+            },
+            {
+                path:"my_enroll_class",
+                element:<MyEnrollClass></MyEnrollClass>
             },
             {
                 path:"my_selecte_class",
