@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { AuthContext } from '../../context/AuthProvider'
 import { Navigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider'
+import { useContext } from 'react';
 
 const PrivetRoute = ({children}) => {
-
-    const {user, loading} = useState(AuthContext);
+    const {user, loading} = useContext(AuthContext);
     if(loading){
         return <button className="btn btn-square">
         <span className="loading loading-spinner"></span>
