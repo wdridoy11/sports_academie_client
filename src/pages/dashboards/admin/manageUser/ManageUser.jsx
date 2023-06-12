@@ -99,8 +99,7 @@ const ManageUser = () => {
                 </tr>
               </thead>
               <tbody>
-                {users.map((userInfo,index)=><>
-                  <tr>
+                {users.map((userInfo,index)=><tr key={index}>
                       <th>{index+1}</th>
                       <td>
                         <div className="flex items-center space-x-3">
@@ -133,7 +132,7 @@ const ManageUser = () => {
                          </button>
                       </th>
                   </tr>
-                </>)}
+                  )}
               </tbody>
               </table>
           </div>

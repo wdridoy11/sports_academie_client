@@ -24,7 +24,7 @@ const Gallery = () => {
       img:"https://img.freepik.com/free-photo/badminton-concept-with-shuttlecock-racket_23-2149940874.jpg?w=1380&t=st=1686231803~exp=1686232403~hmac=0fdac9de5afe95ea192379dd1510876bb20aaeb617b20a8fd9b6fcc4a0357508"
     },
     {
-      img:"https://img.freepik.com/free-photo/badminton-concept-with-shuttlecock-racket_23-2149940874.jpg?w=1380&t=st=1686231803~exp=1686232403~hmac=0fdac9de5afe95ea192379dd1510876bb20aaeb617b20a8fd9b6fcc4a0357508"
+      img:"https://cdn.pixabay.com/photo/2013/05/02/21/23/basketball-108622_1280.jpg"
     },
   ]
 

@@ -19,5 +19,5 @@ const Payment = () => {
     </div>
   )
 }
-console.log(stripePromise)
+// console.log(stripePromise)
 export default Payment

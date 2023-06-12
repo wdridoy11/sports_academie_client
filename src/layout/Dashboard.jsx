@@ -9,10 +9,9 @@ import useInstructor from '../hook/useInstructor';
 
 const Dashboard = () => {
   const {user} = useContext(AuthContext);
-  // const isAdmin = 
+
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
-
   return (
     <div>
         <div>
