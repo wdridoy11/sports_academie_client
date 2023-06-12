@@ -7,18 +7,18 @@ import Login from '../../pages/login/Login'
 import Home from '../../pages/home/home/Home'
 import Dashboard from '../../layout/Dashboard'
 import Classes from '../../pages/classes/Classes'
+import AdminRoute from '../adminRoute/AdminRoute'
+import PrivetRoute from '../privetRoute/PrivetRoute'
+import Payment from '../../pages/dashboards/payment/Payment'
 import Instructors from '../../pages/instructors/Instructors'
 import Registration from '../../pages/registration/Registration'
+import InstructorsRoute from '../instructorsRoute/InstructorsRoute'
 import MyClass from '../../pages/dashboards/instructor/myClass/MyClass'
 import AddClass from '../../pages/dashboards/instructor/addClass/AddClass'
 import ManageUser from '../../pages/dashboards/admin/manageUser/ManageUser'
 import ManageClass from '../../pages/dashboards/admin/manageClass/ManageClass'
 import MySelecteClass from '../../pages/dashboards/student/mySelecteClass/MySelecteClass'
-import Payment from '../../pages/dashboards/payment/Payment'
 import MyEnrollClass from '../../pages/dashboards/student/myEnrollClass/MyEnrollClass'
-import PrivetRoute from '../privetRoute/PrivetRoute'
-import AdminRoute from '../adminRoute/AdminRoute'
-import InstructorsRoute from '../instructorsRoute/InstructorsRoute'
 
 const router=createBrowserRouter([
     {
@@ -70,11 +70,11 @@ const router=createBrowserRouter([
 
             {
                 path:"my_enroll_class",
-                element:<MyEnrollClass></MyEnrollClass>
+                element:<PrivetRoute><MyEnrollClass></MyEnrollClass></PrivetRoute>
             },
             {
                 path:"my_selecte_class",
-                element:<MySelecteClass></MySelecteClass>
+                element:<PrivetRoute><MySelecteClass></MySelecteClass></PrivetRoute>
             },
             {
                 path:"payment",

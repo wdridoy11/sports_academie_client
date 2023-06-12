@@ -6,12 +6,14 @@ import { Link, Outlet } from 'react-router-dom'
 import { AuthContext } from '../context/AuthProvider'
 import useAdmin from '../hook/useAdmin';
 import useInstructor from '../hook/useInstructor';
+import useStudent from '../hook/useStudent';
 
 const Dashboard = () => {
-  const {user} = useContext(AuthContext);
 
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
+  const [isStudent] = useStudent();
+  
   return (
     <div>
         <div>
@@ -44,7 +46,7 @@ const Dashboard = () => {
                     </>
                   }
                     {
-                      user && <>
+                      isStudent && <>
                         <Link className='text-base font-medium mb-3 flex gap-2 items-center' to={'/dashboard/my_selecte_class'}>
                            <FaCheckSquare></FaCheckSquare> My Selecte Class 
                         </Link>
