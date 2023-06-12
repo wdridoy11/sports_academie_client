@@ -17,6 +17,8 @@ import MySelecteClass from '../../pages/dashboards/student/mySelecteClass/MySele
 import Payment from '../../pages/dashboards/payment/Payment'
 import MyEnrollClass from '../../pages/dashboards/student/myEnrollClass/MyEnrollClass'
 import PrivetRoute from '../privetRoute/PrivetRoute'
+import AdminRoute from '../adminRoute/AdminRoute'
+import InstructorsRoute from '../instructorsRoute/InstructorsRoute'
 
 const router=createBrowserRouter([
     {
@@ -50,21 +52,22 @@ const router=createBrowserRouter([
         element:<PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
         children:[
             {
-                path:"add_class",
-                element:<AddClass></AddClass>
-            },
-            {
-                path:"my_class",
-                element:<MyClass></MyClass>
-            },
-            {
                 path:"manage_class",
-                element:<ManageClass></ManageClass>
+                element:<AdminRoute><ManageClass></ManageClass></AdminRoute>
             },
             {
                 path:"manage_user",
-                element:<ManageUser></ManageUser>
+                element:<AdminRoute><ManageUser></ManageUser></AdminRoute>
             },
+            {
+                path:"add_class",
+                element:<InstructorsRoute><AddClass></AddClass></InstructorsRoute>
+            },
+            {
+                path:"my_class",
+                element:<InstructorsRoute><MyClass></MyClass></InstructorsRoute>
+            },
+
             {
                 path:"my_enroll_class",
                 element:<MyEnrollClass></MyEnrollClass>
