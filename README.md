@@ -1,5 +1,16 @@
 # Getting Started with Create React App
 
+Website name : Sports academies<br/>
+-1: User can login and register, by default user join this website as a student<br />
+-2: By default, everyone will be a student, And he will see student dashboard <br />
+-3: If someone joins here as a student, then he/she can select his preferred class and buy that class.<br/>
+-4: If the admin makes someone an instructor, then he/she can add classes here<br/>
+-5: If the admin wants, he/she can make someone an instructor and can also make admits And can also delete<br/>
+
+Used packages/ technology name:<br/>
+React JS, React-router, React-icons, React-hook-form,react-awesome-slider, Express JS, Mongodb, Firebase , daisyui, tailwindcss, lightgallery
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

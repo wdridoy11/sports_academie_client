@@ -68,7 +68,7 @@ const Classes = () => {
       <Cover coverImg={coverImage} title="Classes"></Cover>
         <div className='container mx-auto px-5 py-20'>
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-10'>
-              {classes.map((classInfo)=>console.log(classInfo.available_seats))}
+              {/* {classes.map((classInfo)=>console.log(classInfo.available_seats===0?"Not":"Yes"))} */}
               {classes.map((classInfo)=><>
                 <div className='rounded-lg'>
                   <img className='w-full h-[300px] object-cover rounded-t-md' src={classInfo.class_image} alt="Sports_image" />

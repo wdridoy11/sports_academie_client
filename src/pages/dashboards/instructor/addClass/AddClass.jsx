@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../../../../context/AuthProvider'
 import { useForm } from 'react-hook-form';
-import { useEffect } from 'react';
 
 const AddClass = () => {
 
