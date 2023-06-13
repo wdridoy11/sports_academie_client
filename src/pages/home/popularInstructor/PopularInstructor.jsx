@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react'
 const PopularInstructor = () => {
 
     const [instructors, setInstructors] = useState([]);
-    // instructors data get from database
     useEffect(()=>{
-      fetch(`http://localhost:5000/instructors`)
+      fetch(`http://localhost:5000/users`)
       .then((res)=>res.json())
       .then((data)=>{
-        setInstructors(data)
+        const filterUser = data.filter(userRole=>userRole.role ==="instructor")
+        setInstructors(filterUser)
       })
     },[])
 
@@ -20,7 +20,7 @@ const PopularInstructor = () => {
             <div className='grid md:grid-cols-3 lg:grid-cols-6 gap-10'>
               {instructors.map((instructorsInfo)=><>
                 <div className='rounded-lg'>
-                  <img className='w-full h-[200px] object-cover rounded-t-md' src={instructorsInfo.img} alt="instructors_image" />
+                  <img className='w-full h-[200px] object-cover rounded-t-md' src={instructorsInfo.photoURL} alt="instructors_image" />
                 </div>             
               </>)}
             </div>

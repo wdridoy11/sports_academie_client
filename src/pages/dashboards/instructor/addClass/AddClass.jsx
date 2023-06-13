@@ -1,14 +1,27 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../../../../context/AuthProvider'
 import { useForm } from 'react-hook-form';
+import { useEffect } from 'react';
 
 const AddClass = () => {
 
     const {user} = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
+
     const onSubmit = data => {
-        console.log(data)
+        fetch(`http://localhost:5000/add_classes`,{
+            method:"POST",
+            headers:{
+                "content-type":"application/json"
+            },
+            body:JSON.stringify(data)
+        })
+        .then((res)=>res.json(data))
+        .then((data)=>{
+          console.log(data)
+        })
     };
+
   return (
     <div className='py-20'>
         <div className='container mx-auto px-5'>

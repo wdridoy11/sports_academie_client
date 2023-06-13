@@ -5,7 +5,7 @@ const coverImage = `https://img.freepik.com/free-photo/empty-classroom-due-coron
 const Instructors = () => {
 
   const [instructors, setInstructors] = useState([]);
-
+  
 useEffect(()=>{
   fetch(`http://localhost:5000/users`)
   .then((res)=>res.json())
@@ -14,19 +14,8 @@ useEffect(()=>{
     setInstructors(filterUser)
   })
 },[])
-// console.log(instructors)
 
 
-  // instructors data get from database
-  // useEffect(()=>{
-  //   fetch(`http://localhost:5000/instructors`)
-  //   .then((res)=>res.json())
-  //   .then((data)=>{
-  //     setInstructors(data)
-  //   })
-  // },[])
-
-  // console.log(instructors)
   return (
     <div>
       <Cover coverImg={coverImage} title="Classes"></Cover>
