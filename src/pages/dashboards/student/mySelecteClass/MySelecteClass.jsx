@@ -9,7 +9,7 @@ const MySelecteClass = () => {
   const [selects, setSelects] = useState([]);
   // class data load
   useEffect(()=>{
-    fetch(`https://sports-academie-server.vercel.app/selects`)
+    fetch(`http://localhost:5000/selects?email=${user?.email}`)
     .then((res)=>res.json())
     .then((data)=>{
       setSelects(data)

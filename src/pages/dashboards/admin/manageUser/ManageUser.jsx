@@ -84,8 +84,8 @@ const ManageUser = () => {
   }
 
   return (
-    <div className="w-full px-5">
-      <div>
+    <div>
+      <div className="w-full px-5">
         <div className="overflow-x-auto">
             <table className="table table-zebra w-full">
               <thead>

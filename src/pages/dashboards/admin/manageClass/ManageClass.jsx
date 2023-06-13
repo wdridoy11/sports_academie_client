@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
 import { FaUserCircle } from 'react-icons/fa';
-
+import { animated } from '@react-spring/web'
 const ManageClass = () => {
 
   const [manageClasses,setManageClasses] = useState([]);
@@ -30,6 +30,14 @@ const ManageClass = () => {
 
   return (
     <div>
+          <animated.div
+            style={{
+              width: 80,
+              height: 80,
+              background: '#ff6d6d',
+              borderRadius: 50,
+            }}
+          />
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-10'>
             {
               manageClasses.map((classes)=><>
@@ -59,12 +67,12 @@ const ManageClass = () => {
                           <button 
                             onClick={()=>handleMakeApproved(classes)}
                             className={classes.status === "approved"? 
-                            'px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5 mx-3':
+                            'px-7 py-2 bg-black  text-white rounded-md font-semibold text-base mt-5 mx-3 disabled opacity-40 cursor-not-allowed':
                             'px-7 py-2 border text-black rounded-md font-semibold text-base mt-5 mx-3'}> Approved
                           </button>
                           <button 
-                            className={classes.status === "denied"? 
-                            'px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5 mx-3':
+                            className={classes.status === "approved"? 
+                            'px-7 py-2 bg-black  text-white rounded-md font-semibold text-base mt-5 mx-3 disabled opacity-40 cursor-not-allowed':
                             'px-7 py-2 border text-black rounded-md font-semibold text-base mt-5 mx-3'}> Denied
                           </button>
 
