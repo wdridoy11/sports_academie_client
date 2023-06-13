@@ -5,16 +5,28 @@ const coverImage = `https://img.freepik.com/free-photo/empty-classroom-due-coron
 const Instructors = () => {
 
   const [instructors, setInstructors] = useState([]);
-  // instructors data get from database
-  useEffect(()=>{
-    fetch(`http://localhost:5000/instructors`)
-    .then((res)=>res.json())
-    .then((data)=>{
-      setInstructors(data)
-    })
-  },[])
 
-  console.log(instructors)
+useEffect(()=>{
+  fetch(`http://localhost:5000/users`)
+  .then((res)=>res.json())
+  .then((data)=>{
+    const filterUser = data.filter(userRole=>userRole.role ==="instructor")
+    setInstructors(filterUser)
+  })
+},[])
+// console.log(instructors)
+
+
+  // instructors data get from database
+  // useEffect(()=>{
+  //   fetch(`http://localhost:5000/instructors`)
+  //   .then((res)=>res.json())
+  //   .then((data)=>{
+  //     setInstructors(data)
+  //   })
+  // },[])
+
+  // console.log(instructors)
   return (
     <div>
       <Cover coverImg={coverImage} title="Classes"></Cover>
@@ -22,9 +34,9 @@ const Instructors = () => {
             <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-10'>
               {instructors.map((instructorsInfo)=><>
                 <div className='rounded-lg'>
-                  <img className='w-full h-[300px] object-cover rounded-t-md' src={instructorsInfo.img} alt="instructors_image" />
+                  <img className='w-full h-[300px] object-cover rounded-t-md' src={instructorsInfo.photoURL} alt="instructors_image" />
                   <div className='p-4 border rounded-b-lg'>
-                      <h3 className='text-2xl font-semibold'>{instructorsInfo.name}</h3>
+                      <h3 className='text-2xl font-semibold'>{instructorsInfo.name || instructorsInfo.displayName}</h3>
                       <p className='text-base font-normal text-[#062015]'>{instructorsInfo.email}</p>
                   </div>
                 </div>             
