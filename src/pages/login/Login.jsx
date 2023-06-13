@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import loginImg from '../../assets/login.png'
 import SocialLogin from '../../components/shared/socialLogin/SocialLogin';
@@ -16,12 +16,13 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     // react hook form
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate();
     // handle login system
     const onSubmit = data => {
         loginUser(data.email, data.password)
         .then((res)=>{
           const user = res.user;
-          console.log(user)
+          navigate("/")
         })
         .catch((err)=>setError(err.message))
     };

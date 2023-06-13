@@ -1,14 +1,16 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../../../../context/AuthProvider'
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const AddClass = () => {
 
     const {user} = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate();
 
     const onSubmit = data => {
-        // fetch(`https://sports-academie-server.vercel.app/add_classes`,{
         fetch(`http://localhost:5000/manage_classes`,{
             method:"POST",
             headers:{
@@ -18,7 +20,14 @@ const AddClass = () => {
         })
         .then((res)=>res.json(data))
         .then((data)=>{
-          console.log(data)
+          if(data.insertedId){
+            Swal.fire(
+                'Congratulation',
+                'Class added successfully',
+                'success'
+              )
+          }
+          navigate("/dashboard/my_class")
         })
     };
 

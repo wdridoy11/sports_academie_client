@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import Swal from 'sweetalert2';
 import { FaEye } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import loginImg from '../../assets/login.png'
 import { AuthContext } from '../../context/AuthProvider';
@@ -14,6 +14,7 @@ const Registration = () => {
   const {createUserUsingEmail, updateUserProfile} = useContext(AuthContext)
   const [confirmPassword, setConfirmPassword] = useState(false);
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate();
 
     const onSubmit = data => {
       if(data.password !== data.confirm_password){
@@ -37,7 +38,7 @@ const Registration = () => {
         .then((res)=>{
           const user = res.user;
           updateUserProfile(user,data.name,data.photoURL)
-          console.log("user",user)
+          navigate('/')
         })
         .catch((err)=>console.log(err.message))
       }

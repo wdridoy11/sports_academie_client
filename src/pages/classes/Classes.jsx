@@ -19,14 +19,15 @@ const Classes = () => {
       const userEmails = data.find((userEmail)=>userEmail.email === user.email);
       setUsers(userEmails)
     })
-  },[])
+  },[user])
 
   // classes data get from database
   useEffect(()=>{
-    fetch(`https://sports-academie-server.vercel.app/classes`)
+    fetch(`http://localhost:5000/manage_classes`)
     .then((res)=>res.json())
     .then((data)=>{
-      setClasses(data)
+      const statusCheck = data.filter((classStatus)=>classStatus.status==="approved")
+      setClasses(statusCheck)
     })
   },[])
 
@@ -67,7 +68,6 @@ const Classes = () => {
       <Cover coverImg={coverImage} title="Classes"></Cover>
         <div className='container mx-auto px-5 py-20'>
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-10'>
-              {/* {classes.map((classInfo)=>console.log(classInfo.available_seats===0?"Not":"Yes"))} */}
               {classes.map((classInfo)=><>
                 <div className='rounded-lg'>
                   <img className='w-full h-[300px] object-cover rounded-t-md' src={classInfo.class_image} alt="Sports_image" />
@@ -75,7 +75,6 @@ const Classes = () => {
                       <h3 className='text-2xl font-semibold mb-4'>{classInfo.class_name}</h3>
                       <div className='flex justify-between'>
                           <div className='flex gap-2 items-center'>
-                              <img className='w-7 h-7 object-cover rounded-full' src={coverImage} alt="Instructors" />
                               <p className='text-base font-normal text-[#062015]'>{classInfo.instructor_name}</p>
                           </div>
                           <div className='flex gap-1 items-center'>
@@ -86,14 +85,10 @@ const Classes = () => {
                               <p className='text-xl font-bold text-black'>${classInfo.price}</p>
                           </div>
                       </div>
-
-                          {users && users.role !== "student" ? <button className='px-7 py-2 bg-red-600 text-white rounded-md font-semibold text-base mt-5 opacity-50' disabled>Select</button>:
-                            <button onClick={()=>handleLoginCheck(classInfo,user.email)}  className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button>
-                          }
-                          {/* {users.role === "admin" && <button className='px-7 py-2 bg-red-600 text-white rounded-md font-semibold text-base mt-5 opacity-50' disabled>Select</button>}
-                          {users.role === "student" && <button onClick={()=>handleLoginCheck(classInfo,user.email)}  className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button>}
-                          {users.role === "instructor" && <button className='px-7 py-2 bg-red-600 text-white rounded-md font-semibold text-base mt-5 opacity-50' disabled>Select</button>} */}
-                          {/* <button onClick={()=>handleLoginCheck(classInfo,user.email)}  className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button> */}
+                      {
+                        users && users.role !== "student" ? <button className='px-7 py-2 bg-red-600 text-white rounded-md font-semibold text-base mt-5 opacity-50' disabled>Select</button>:
+                        <button onClick={()=>handleLoginCheck(classInfo,user.email)}  className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button>
+                      }
                   </div>
                 </div>             
               </>)}

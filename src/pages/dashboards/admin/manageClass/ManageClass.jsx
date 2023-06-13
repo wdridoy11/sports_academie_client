@@ -2,22 +2,35 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
 import { FaUserCircle } from 'react-icons/fa';
+
 const ManageClass = () => {
 
-
   const [manageClasses,setManageClasses] = useState([]);
+  // manage data get
   useEffect(()=>{
     fetch(`http://localhost:5000/manage_classes`)
     .then((res)=>res.json())
     .then((data)=>{
       setManageClasses(data)
     })
-  },[])
-console.log(manageClasses)
+  },[manageClasses])
+
+  const handleMakeApproved = (classes)=>{
+    fetch(`http://localhost:5000/manage_classes/${classes._id}`,{
+      method:"PATCH",
+      headers:{
+        "content-type":"application/json"
+      }
+    })
+    .then((res)=>res.json())
+    .then((data)=>{
+      console.log(data)
+    })
+  }
 
   return (
     <div>
-        <div>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-10'>
             {
               manageClasses.map((classes)=><>
               <div className='rounded-lg'>
@@ -37,9 +50,28 @@ console.log(manageClasses)
                               <p className='text-xl font-bold text-black'>${classes.price}</p>
                           </div>
                       </div>
-                          <button className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Pending</button>
-                          <button className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5 ml-3'>Approved</button>
-                          <button className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5 ml-3'>Denied</button>
+                      <div>
+                          <button 
+                            className={classes.status === "pending"? 
+                            'px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5':
+                            'px-7 py-2 border text-black rounded-md font-semibold text-base mt-5 ml-3'}> Pending
+                          </button>
+                          <button 
+                            onClick={()=>handleMakeApproved(classes)}
+                            className={classes.status === "approved"? 
+                            'px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5 mx-3':
+                            'px-7 py-2 border text-black rounded-md font-semibold text-base mt-5 mx-3'}> Approved
+                          </button>
+                          <button 
+                            className={classes.status === "denied"? 
+                            'px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5 mx-3':
+                            'px-7 py-2 border text-black rounded-md font-semibold text-base mt-5 mx-3'}> Denied
+                          </button>
+
+                          {/* <button className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Pending</button> */}
+                          {/* <button className='px-7 py-2 border text-black rounded-md font-semibold text-base mt-5 ml-3'>Approved</button> */}
+                          {/* <button className='px-7 py-2 border text-black rounded-md font-semibold text-base mt-5 ml-3'>Denied</button> */}
+                      </div>
                   </div>
                 </div> 
               </>)
