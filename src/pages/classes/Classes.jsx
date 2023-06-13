@@ -62,7 +62,7 @@ const Classes = () => {
       })
     }
   }
-console.log(users.role)
+
   return (
     <div>
       <Cover coverImg={coverImage} title="Classes"></Cover>
@@ -86,10 +86,14 @@ console.log(users.role)
                               <p className='text-xl font-bold text-black'>${classInfo.price}</p>
                           </div>
                       </div>
-                        {
-                        users && users.role !== "student" ? <button className='px-7 py-2  bg-red-600 text-white rounded-md font-semibold text-base mt-5 opacity-50' disabled>Select</button>:
-                          <button onClick={()=>handleLoginCheck(classInfo,user.email)}  className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button>
-                        }
+
+                          {users && users.role !== "student" ? <button className='px-7 py-2 bg-red-600 text-white rounded-md font-semibold text-base mt-5 opacity-50' disabled>Select</button>:
+                            <button onClick={()=>handleLoginCheck(classInfo,user.email)}  className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button>
+                          }
+                          {/* {users.role === "admin" && <button className='px-7 py-2 bg-red-600 text-white rounded-md font-semibold text-base mt-5 opacity-50' disabled>Select</button>}
+                          {users.role === "student" && <button onClick={()=>handleLoginCheck(classInfo,user.email)}  className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button>}
+                          {users.role === "instructor" && <button className='px-7 py-2 bg-red-600 text-white rounded-md font-semibold text-base mt-5 opacity-50' disabled>Select</button>} */}
+                          {/* <button onClick={()=>handleLoginCheck(classInfo,user.email)}  className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button> */}
                   </div>
                 </div>             
               </>)}

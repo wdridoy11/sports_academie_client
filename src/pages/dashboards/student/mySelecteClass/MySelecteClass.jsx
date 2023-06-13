@@ -8,19 +8,15 @@ const MySelecteClass = () => {
   const [selects, setSelects] = useState([]);
   // class data load
   useEffect(()=>{
-    fetch(`http://localhost:5000/selects`,{
-      headers:{
-        authorization :  `Bearer ${token}`
-      }
-    })
+    fetch(`http://localhost:5000/selects`)
     .then((res)=>res.json())
     .then((data)=>{
       setSelects(data)
     })
   },[])
 
-
-  const handleRemoveSelects=(id)=>{
+  const handleRemoveSelects=(classInfo)=>{
+    console.log(classInfo)
     Swal.fire({
       title: 'Are you sure?',
       text: "You will delete class!",
@@ -31,7 +27,7 @@ const MySelecteClass = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/selects/${id}`,{
+        fetch(`http://localhost:5000/selects/${classInfo._id}`,{
           method:"DELETE",
           headers:{
             "content-type":"application/json"
@@ -39,10 +35,11 @@ const MySelecteClass = () => {
         })
         .then((res)=>res.json())
         .then((data)=>{
+          console.log(data)
           if(data.deletedCount>0){
             Swal.fire("Deleted!", "User deleted successfully", "success");
           }
-          const remaining = selects.filter((user)=>user._id !== id);
+          const remaining = selects.filter((select)=>select._id !== classInfo._id);
           setSelects(remaining);
         })
       }
@@ -67,7 +64,7 @@ const MySelecteClass = () => {
                     <p className='text-xl font-bold text-black'>${classes.classInfo.price}</p>
                   </div>
                 </div>
-                    <button onClick={()=>handleRemoveSelects(classes.classInfo._id)} className='px-7 py-2 bg-red-600 text-white rounded-md font-semibold text-base mt-5 mr-3'>Remove</button>
+                    <button onClick={()=>handleRemoveSelects(classes.classInfo)} className='px-7 py-2 bg-red-600 text-white rounded-md font-semibold text-base mt-5 mr-3'>Remove</button>
                     <Link to={'/dashboard/payment'} className='px-7 py-2 bg-[#05F3FF] text-black rounded-md font-semibold text-base mt-5'>Pay Now</Link>
                 </div>
              </div> 
