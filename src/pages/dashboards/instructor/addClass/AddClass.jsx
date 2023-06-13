@@ -8,7 +8,8 @@ const AddClass = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = data => {
-        fetch(`https://sports-academie-server.vercel.app/add_classes`,{
+        // fetch(`https://sports-academie-server.vercel.app/add_classes`,{
+        fetch(`http://localhost:5000/manage_classes`,{
             method:"POST",
             headers:{
                 "content-type":"application/json"
@@ -61,6 +62,7 @@ const AddClass = () => {
                         name='instructor_email' 
                         id='instructor_email'
                         defaultValue={user.email} 
+                        {...register("instructor_email", { required: true})} 
                         placeholder="Instructor Email" 
                         className="input mb-3 disabled bg-slate-300 input-bordered w-full" 
                         readOnly
