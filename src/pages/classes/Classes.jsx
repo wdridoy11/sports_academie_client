@@ -16,8 +16,8 @@ const Classes = () => {
     fetch(`http://localhost:5000/users`)
     .then((res)=>res.json())
     .then((data)=>{
-      const datarole = data.find((userEmail)=>userEmail.email === user.email);
-      setUsers(datarole)
+      const userEmails = data.find((userEmail)=>userEmail.email === user.email);
+      setUsers(userEmails)
     })
   },[])
 
@@ -32,8 +32,8 @@ const Classes = () => {
   },[])
 
   // handle login 
-  const handleLoginCheck=(classInfo,userEmail)=>{
-    const classAllInfo={classInfo,userEmail }
+  const handleLoginCheck=(classInfo,email)=>{
+    const classAllInfo={classInfo,email }
     if(!user){
       Swal.fire(
         'Login Please',

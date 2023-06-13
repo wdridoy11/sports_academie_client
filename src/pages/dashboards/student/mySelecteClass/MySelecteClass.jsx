@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../../../context/AuthProvider';
 
 const MySelecteClass = () => {
-
+  const {user} = useContext(AuthContext)
   const token = localStorage.getItem("access-token")
   const [selects, setSelects] = useState([]);
   // class data load
   useEffect(()=>{
-    fetch(`http://localhost:5000/selects`)
+    fetch(`http://localhost:5000/selects?email=${user.email}`)
     .then((res)=>res.json())
     .then((data)=>{
       setSelects(data)
