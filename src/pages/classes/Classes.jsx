@@ -16,8 +16,8 @@ const Classes = () => {
     fetch(`https://sports-academie-server.vercel.app/users`)
     .then((res)=>res.json())
     .then((data)=>{
-      const datarole = data.find((userEmail)=>userEmail.email === user.email);
-      setUsers(datarole)
+      const userEmails = data.find((userEmail)=>userEmail.email === user.email);
+      setUsers(userEmails)
     })
   },[])
 
