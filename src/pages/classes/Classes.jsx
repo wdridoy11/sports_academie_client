@@ -13,7 +13,7 @@ const Classes = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(()=>{
-    fetch(`http://localhost:5000/users`)
+    fetch(`https://sports-academie-server.vercel.app/users`)
     .then((res)=>res.json())
     .then((data)=>{
       const datarole = data.find((userEmail)=>userEmail.email === user.email);
@@ -21,10 +21,9 @@ const Classes = () => {
     })
   },[])
 
-  // console.log(users.role)
   // classes data get from database
   useEffect(()=>{
-    fetch(`http://localhost:5000/classes`)
+    fetch(`https://sports-academie-server.vercel.app/classes`)
     .then((res)=>res.json())
     .then((data)=>{
       setClasses(data)
@@ -33,7 +32,7 @@ const Classes = () => {
 
   // handle login 
   const handleLoginCheck=(classInfo,userEmail)=>{
-    const classAllInfo={classInfo,userEmail }
+    // const classAllInfo={classInfo,userEmail }
     if(!user){
       Swal.fire(
         'Login Please',
@@ -42,12 +41,12 @@ const Classes = () => {
       )
     }else{
       // selects data post
-      fetch(`http://localhost:5000/selects`,{
+      fetch(`https://sports-academie-server.vercel.app/selects`,{
         method:"POST",
         headers:{
           "content-type":"application/json"
         },
-        body:JSON.stringify(classAllInfo)
+        body:JSON.stringify({...classInfo, user:`${user.email}`})
       })
       .then((res)=>res.json())
       .then((data)=>{

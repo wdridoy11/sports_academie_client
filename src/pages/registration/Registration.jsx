@@ -23,7 +23,7 @@ const Registration = () => {
         'error'
       )
       }else{
-        fetch(`http://localhost:5000/users`,{
+        fetch(`https://sports-academie-server.vercel.app/users`,{
           method:"POST",
           headers:{
             'content-type':"application/json"

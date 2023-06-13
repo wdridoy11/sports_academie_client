@@ -11,7 +11,7 @@ const ManageUser = () => {
 
   // manage user data get
   useEffect(()=>{
-    fetch(`http://localhost:5000/users`)
+    fetch(`https://sports-academie-server.vercel.app/users`)
     .then((res)=>res.json())
     .then((data)=>{
       setUsers(data)
@@ -20,8 +20,7 @@ const ManageUser = () => {
 
   // handle make admin
   const handleMakeAdmin=(user)=>{
-    // console.log(user._id)
-    fetch(`http://localhost:5000/users/admin/${user._id}`,{
+    fetch(`https://sports-academie-server.vercel.app/users/admin/${user._id}`,{
       method:"PATCH",
     })
     .then((res)=>res.json())
@@ -39,7 +38,7 @@ const ManageUser = () => {
 
   // handle make Instructor
   const handleMakeInstructor=(user)=>{
-    fetch(`http://localhost:5000/users/instructor/${user._id}`,{
+    fetch(`https://sports-academie-server.vercel.app/users/instructor/${user._id}`,{
       method:"PATCH",
     })
     .then((res)=>res.json())
@@ -66,7 +65,7 @@ const ManageUser = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/${id}`,{
+        fetch(`https://sports-academie-server.vercel.app/users/${id}`,{
           method:"DELETE",
           headers:{
             "content-type":"application/json"

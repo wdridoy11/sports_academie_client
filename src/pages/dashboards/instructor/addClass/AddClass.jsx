@@ -8,7 +8,7 @@ const AddClass = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = data => {
-        fetch(`http://localhost:5000/add_classes`,{
+        fetch(`https://sports-academie-server.vercel.app/add_classes`,{
             method:"POST",
             headers:{
                 "content-type":"application/json"

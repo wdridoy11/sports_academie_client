@@ -13,7 +13,7 @@ const CheckoutForm = ({price}) => {
     const [clientSecret,setClientSecret] = useState("");
 
     // useEffect(()=>{
-    //     fetch(`http://localhost:5000/create_payment_intent`,{price},{
+    //     fetch(`https://sports-academie-server.vercel.app/create_payment_intent`,{price},{
     //         method:"POST",
     //         headers:{
     //             "content-type":"application/json"

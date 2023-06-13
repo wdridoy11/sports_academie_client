@@ -4,7 +4,7 @@ const PopularInstructor = () => {
 
     const [instructors, setInstructors] = useState([]);
     useEffect(()=>{
-      fetch(`http://localhost:5000/users`)
+      fetch(`https://sports-academie-server.vercel.app/users`)
       .then((res)=>res.json())
       .then((data)=>{
         const filterUser = data.filter(userRole=>userRole.role ==="instructor")
