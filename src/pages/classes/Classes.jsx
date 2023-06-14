@@ -32,12 +32,11 @@ const Classes = () => {
 
   // handle login 
   const handleLoginCheck=(classInfo,email)=>{
-    // console.log(classInfo, email)
     if(!user){
       Swal.fire(
         'Login Please',
         'Log in before selecting the course',
-        'error'
+        'error',
       )
     }else{
       // selects data post
@@ -46,7 +45,6 @@ const Classes = () => {
         headers:{
           "content-type":"application/json"
         },
-        // body:JSON.stringify({...classInfo,email:`${email}`})
         body:JSON.stringify({classInfo,email:`${email}`})
       })
       .then((res)=>res.json())
@@ -84,10 +82,11 @@ const Classes = () => {
                               <p className='text-xl font-bold text-black'>${classInfo.price}</p>
                           </div>
                       </div>
-                      {
+                      <button onClick={()=>handleLoginCheck(classInfo,user && user.email)}  className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button>
+                      {/* {
                         users && users.role !== "student" ? <button className='px-7 py-2 bg-red-600 text-white rounded-md font-semibold text-base mt-5 opacity-50' disabled>Select</button>:
                         <button onClick={()=>handleLoginCheck(classInfo,user.email)}  className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button>
-                      }
+                      } */}
                   </div>
                 </div>)}
             </div>
