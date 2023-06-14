@@ -6,7 +6,7 @@ import { animated } from '@react-spring/web'
 const ManageClass = () => {
 
   const [manageClasses,setManageClasses] = useState([]);
-  // manage data get
+  // manage class data get
   useEffect(()=>{
     fetch(`https://sports-academie-server.vercel.app/manage_classes`)
     .then((res)=>res.json())
@@ -15,6 +15,7 @@ const ManageClass = () => {
     })
   },[manageClasses])
 
+  // manage_class data Approved handle
   const handleMakeApproved = (classes)=>{
     fetch(`https://sports-academie-server.vercel.app/${classes._id}`,{
       method:"PATCH",
@@ -30,7 +31,7 @@ const ManageClass = () => {
 
   return (
     <div>
-          <animated.div
+        <animated.div
             style={{
               width: 80,
               height: 80,
@@ -75,10 +76,6 @@ const ManageClass = () => {
                             'px-7 py-2 bg-black  text-white rounded-md font-semibold text-base mt-5 mx-3 disabled opacity-40 cursor-not-allowed':
                             'px-7 py-2 border text-black rounded-md font-semibold text-base mt-5 mx-3'}> Denied
                           </button>
-
-                          {/* <button className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Pending</button> */}
-                          {/* <button className='px-7 py-2 border text-black rounded-md font-semibold text-base mt-5 ml-3'>Approved</button> */}
-                          {/* <button className='px-7 py-2 border text-black rounded-md font-semibold text-base mt-5 ml-3'>Denied</button> */}
                       </div>
                   </div>
                 </div> 

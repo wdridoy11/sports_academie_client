@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react'
 
 const PopularInstructor = () => {
 
-    const [instructors, setInstructors] = useState([]);
-
-    useEffect(()=>{
-      fetch(`https://sports-academie-server.vercel.app/users`)
-      .then((res)=>res.json())
-      .then((data)=>{
-        const filterUser = data.filter(userRole=>userRole.role ==="instructor")
-        setInstructors(filterUser)
-      })
-    },[])
+  const [instructors, setInstructors] = useState([]);
+  // instructor get from database
+  useEffect(()=>{
+    fetch(`https://sports-academie-server.vercel.app/users`)
+    .then((res)=>res.json())
+    .then((data)=>{
+      const filterUser = data.filter(userRole=>userRole.role ==="instructor")
+      setInstructors(filterUser)
+    })
+  },[])
 
   return (
     <div>

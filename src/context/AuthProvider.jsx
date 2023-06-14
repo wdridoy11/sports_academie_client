@@ -2,10 +2,10 @@ import React, { createContext, useEffect, useState } from 'react'
 import {
   getAuth,
   signOut,
+  updateProfile,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  updateProfile,
   } from 'firebase/auth';
 import app from '../utils/firebase/firebase.config';
 import axios from 'axios';

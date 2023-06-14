@@ -9,7 +9,8 @@ const AddClass = () => {
     const {user} = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
-
+    
+    // class added api
     const onSubmit = data => {
         fetch(`https://sports-academie-server.vercel.app/manage_classes`,{
             method:"POST",

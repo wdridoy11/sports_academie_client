@@ -7,7 +7,7 @@ const MySelecteClass = () => {
 
   const {user} = useContext(AuthContext)
   const [selects, setSelects] = useState([]);
-  // class data load
+  // user select class data
   useEffect(()=>{
     fetch(`https://sports-academie-server.vercel.app/selects?email=${user?.email}`)
     .then((res)=>res.json())
@@ -15,7 +15,7 @@ const MySelecteClass = () => {
       setSelects(data)
     })
   },[])
-
+  // handle remove class data
   const handleRemoveSelects=(classInfo)=>{
     console.log(classInfo._id)
     Swal.fire({

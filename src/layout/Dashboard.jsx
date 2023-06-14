@@ -7,7 +7,7 @@ import useInstructor from '../hook/useInstructor';
 import useStudent from '../hook/useStudent';
 
 const Dashboard = () => {
-
+// import user role
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
   const [isStudent] = useStudent();

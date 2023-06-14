@@ -6,6 +6,7 @@ Website name : Sports academies<br/>
 -3: If someone joins here as a student, then he/she can select his preferred class and buy that class.<br/>
 -4: If the admin makes someone an instructor, then he/she can add classes here<br/>
 -5: If the admin wants, he/she can make someone an instructor and can also make admits And can also delete<br/>
+Website live link :https://sports-academies.web.app <br/>
 
 Used packages/ technology name:<br/>
 React JS, React-router, React-icons, React-hook-form,react-awesome-slider, Express JS, Mongodb, Firebase , daisyui, tailwindcss, lightgallery

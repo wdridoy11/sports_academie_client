@@ -3,8 +3,8 @@ import { AuthContext } from '../context/AuthProvider'
 import useAxiosSecure from './useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 
+// user student check
 const useStudent = () => {
-
     const {user} = useContext(AuthContext);
     const [axiosSecure]= useAxiosSecure();
     const {data:isStudent, isLoading:isStudentLoading}=useQuery({

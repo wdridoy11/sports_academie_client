@@ -1,5 +1,5 @@
 import React from 'react'
-
+// website cover
 const Cover = ({coverImg,title}) => {
   return (
     <div className="hero h-[500px]" style={{backgroundImage:`url(${coverImg})`}}>

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom/dist'
 import logo from '../../../assets/logo.png'
-import { AuthContext } from '../../../context/AuthProvider'
+import { AuthContext } from '../../../context/AuthProvider';
+
 const Header = () => {  
-  
   const {user, logOut} = useContext(AuthContext)
   // landle logout
   const handleUserLogOut =()=>{

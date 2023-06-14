@@ -9,10 +9,10 @@ const Gallery = () => {
 
   const galleryImage=[
     {
-      img:"http://shippo.imoodev.com/wp-content/uploads/2023/03/young-boys-playing-football-soccer-match-at-training-camp-for-kids-e1683718398667.jpg"
+      img:"https://cdn.pixabay.com/photo/2015/01/26/22/40/child-613199_1280.jpg"
     },
     {
-      img:"http://shippo.imoodev.com/wp-content/uploads/2023/03/boy-plays-football-on-stadium-e1683718404185.jpg"
+      img:"https://images.pexels.com/photos/6203594/pexels-photo-6203594.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
       img:"https://img.freepik.com/free-photo/cricketer-field-action_53876-63345.jpg?w=1380&t=st=1686231711~exp=1686232311~hmac=6c02b29526e494bbd7e4f6106ec4597786d1e0e8f4c368ed2e4299676003f485"

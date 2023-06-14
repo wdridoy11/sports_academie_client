@@ -7,6 +7,7 @@ const MyClass = () => {
 
   const {user} = useContext(AuthContext);
   const [instructorClass, setInstructorClass] = useState([]);
+  // manage_class instructor find
   useEffect(()=>{
     fetch(`https://sports-academie-server.vercel.app/manage_classes`)
     .then((res)=>res.json())

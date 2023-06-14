@@ -4,7 +4,6 @@ import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 const SocialLogin = () => {
-
   const navigate= useNavigate();
   const auth = getAuth();
   // handle google login

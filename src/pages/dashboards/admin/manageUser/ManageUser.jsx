@@ -5,7 +5,7 @@ import { AuthContext } from '../../../../context/AuthProvider'
 import Swal from 'sweetalert2';
 
 const ManageUser = () => {
-  const {user} = useContext(AuthContext);
+  
   const [users, setUsers] = useState([]);
 
   // manage user data get

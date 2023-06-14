@@ -4,7 +4,8 @@ const coverImage = `https://img.freepik.com/free-photo/empty-classroom-due-coron
 
 const Instructors = () => {
 
-  const [instructors, setInstructors] = useState([]);
+const [instructors, setInstructors] = useState([]);
+// instructor get from database 
 useEffect(()=>{
   fetch(`https://sports-academie-server.vercel.app/users`)
   .then((res)=>res.json())
@@ -14,21 +15,18 @@ useEffect(()=>{
   })
 },[])
 
-
   return (
     <div>
-      <Cover coverImg={coverImage} title="Classes"></Cover>
+      <Cover coverImg={coverImage} title="Instructor"></Cover>
         <div className='container mx-auto px-5 py-20'>
             <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-10'>
-              {instructors.map((instructorsInfo)=><>
-                <div className='rounded-lg'>
+              {instructors.map((instructorsInfo)=><div key={instructorsInfo._id} className='rounded-lg'>
                   <img className='w-full h-[300px] object-cover rounded-t-md' src={instructorsInfo.photoURL} alt="instructors_image" />
                   <div className='p-4 border rounded-b-lg'>
                       <h3 className='text-2xl font-semibold'>{instructorsInfo.name || instructorsInfo.displayName}</h3>
                       <p className='text-base font-normal text-[#062015]'>{instructorsInfo.email}</p>
                   </div>
-                </div>             
-              </>)}
+                </div>)}
             </div>
         </div>
     </div>

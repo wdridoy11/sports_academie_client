@@ -7,10 +7,12 @@ import { AuthContext } from '../../context/AuthProvider';
 const coverImage = `https://img.freepik.com/free-photo/empty-classroom-due-coronavirus-pandemic_637285-8845.jpg?w=1380&t=st=1686107959~exp=1686108559~hmac=416fd2d9a871e381f690c10bd21f2ce1ae9be581a09438a4a693a396d7e654bc`
 
 const Classes = () => {
+
   const {user} = useContext(AuthContext);
   const [classes, setClasses] = useState([]);
   const [users, setUsers] = useState([]);
 
+  // user data load from database and email check
   useEffect(()=>{
     fetch(`https://sports-academie-server.vercel.app/users`)
     .then((res)=>res.json())
@@ -20,7 +22,7 @@ const Classes = () => {
     })
   },[user])
 
-  // classes data get from database
+  // manage_classes data get from database if status approved then show class
   useEffect(()=>{
     fetch(`https://sports-academie-server.vercel.app/manage_classes`)
     .then((res)=>res.json())
@@ -30,7 +32,7 @@ const Classes = () => {
     })
   },[])
 
-  // handle login 
+  // handle login check if user not login user not select class
   const handleLoginCheck=(classInfo,email)=>{
     if(!user){
       Swal.fire(
@@ -82,11 +84,10 @@ const Classes = () => {
                               <p className='text-xl font-bold text-black'>${classInfo.price}</p>
                           </div>
                       </div>
-                      <button onClick={()=>handleLoginCheck(classInfo,user && user.email)}  className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button>
-                      {/* {
-                        users && users.role !== "student" ? <button className='px-7 py-2 bg-red-600 text-white rounded-md font-semibold text-base mt-5 opacity-50' disabled>Select</button>:
-                        <button onClick={()=>handleLoginCheck(classInfo,user.email)}  className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button>
-                      } */}
+                        {users && users.role !== "student" ? <button className='px-7 py-2 bg-red-600 text-white rounded-md font-semibold text-base mt-5 opacity-50' disabled>Select</button>:
+                          <button onClick={()=>handleLoginCheck(classInfo, user && user.email)}  className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button> 
+                        }
+                        {users && users.role == false && <button onClick={()=>handleLoginCheck(classInfo, user && user.email)}  className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button> }
                   </div>
                 </div>)}
             </div>
