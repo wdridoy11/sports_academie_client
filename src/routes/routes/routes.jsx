@@ -71,7 +71,7 @@ const router=createBrowserRouter([
             {
                 path:"update_class/:id",
                 element:<InstructorsRoute><UpdateClass></UpdateClass></InstructorsRoute>,
-                loader:({params})=>fetch(`http://localhost:5000/manage_classes/${params.id}`)
+                loader:({params})=>fetch(`https://sports-academie-server.vercel.app/manage_classes/${params.id}`)
             },
             {
                 path:"my_enroll_class",

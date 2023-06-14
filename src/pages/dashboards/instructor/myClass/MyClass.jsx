@@ -8,14 +8,14 @@ const MyClass = () => {
   const {user} = useContext(AuthContext);
   const [instructorClass, setInstructorClass] = useState([]);
   useEffect(()=>{
-    fetch(`http://localhost:5000/manage_classes`)
+    fetch(`https://sports-academie-server.vercel.app/manage_classes`)
     .then((res)=>res.json())
     .then((data)=>{
       const instructorData = data.filter((ins)=>ins.instructor_email === user.email)
       setInstructorClass(instructorData)
     })
   },[])
-  console.log(instructorClass)
+  
   return (
     <div className='w-full'>
       <div className='px-5'>
@@ -33,7 +33,6 @@ const MyClass = () => {
               </tr>
             </thead>
             <tbody>
-              {instructorClass.map((instructor)=>console.log(instructor._id))}
               {instructorClass.map((instructor,index)=><>
                 <tr>
                    <th>{index+1}</th>

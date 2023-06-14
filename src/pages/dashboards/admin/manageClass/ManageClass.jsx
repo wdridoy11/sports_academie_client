@@ -8,7 +8,7 @@ const ManageClass = () => {
   const [manageClasses,setManageClasses] = useState([]);
   // manage data get
   useEffect(()=>{
-    fetch(`http://localhost:5000/manage_classes`)
+    fetch(`https://sports-academie-server.vercel.app/manage_classes`)
     .then((res)=>res.json())
     .then((data)=>{
       setManageClasses(data)
@@ -16,7 +16,7 @@ const ManageClass = () => {
   },[manageClasses])
 
   const handleMakeApproved = (classes)=>{
-    fetch(`http://localhost:5000/manage_classes/${classes._id}`,{
+    fetch(`https://sports-academie-server.vercel.app/${classes._id}`,{
       method:"PATCH",
       headers:{
         "content-type":"application/json"

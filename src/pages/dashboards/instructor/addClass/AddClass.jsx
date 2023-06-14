@@ -11,7 +11,7 @@ const AddClass = () => {
     const navigate = useNavigate();
 
     const onSubmit = data => {
-        fetch(`http://localhost:5000/manage_classes`,{
+        fetch(`https://sports-academie-server.vercel.app/manage_classes`,{
             method:"POST",
             headers:{
                 "content-type":"application/json"

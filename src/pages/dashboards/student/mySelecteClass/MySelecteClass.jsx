@@ -9,7 +9,7 @@ const MySelecteClass = () => {
   const [selects, setSelects] = useState([]);
   // class data load
   useEffect(()=>{
-    fetch(`http://localhost:5000/selects?email=${user?.email}`)
+    fetch(`https://sports-academie-server.vercel.app/selects?email=${user?.email}`)
     .then((res)=>res.json())
     .then((data)=>{
       setSelects(data)
@@ -28,7 +28,7 @@ const MySelecteClass = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/selects/${classInfo._id}`,{
+        fetch(`https://sports-academie-server.vercel.app/selects/${classInfo._id}`,{
           method:"DELETE",
           headers:{
             "content-type":"application/json"
@@ -51,7 +51,7 @@ const MySelecteClass = () => {
     <div>
       <div>
         <div className='grid grid-cols-3 gap-5'>
-          {selects && selects.map((classes)=><div>
+          {selects && selects.map((classes)=><div key={classes._id}>
             <div className='rounded-lg'>
               <img className='w-full h-[300px] object-cover rounded-t-md' src={classes.classInfo.class_image} alt="Sports_image" />
               <div className='p-4 border rounded-b-lg'>

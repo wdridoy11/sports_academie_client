@@ -1,12 +1,10 @@
 import React, { useContext } from 'react'
 import { useEffect, useState } from 'react';
-import anime from 'animejs/lib/anime.es.js';
 import { FaTrash, FaUserShield, FaUsers } from 'react-icons/fa'
 import { AuthContext } from '../../../../context/AuthProvider'
 import Swal from 'sweetalert2';
+
 const ManageUser = () => {
-  const anime = require('animejs');
-  // const anime = require('animejs');
   const {user} = useContext(AuthContext);
   const [users, setUsers] = useState([]);
 

@@ -5,7 +5,6 @@ const coverImage = `https://img.freepik.com/free-photo/empty-classroom-due-coron
 const Instructors = () => {
 
   const [instructors, setInstructors] = useState([]);
-  
 useEffect(()=>{
   fetch(`https://sports-academie-server.vercel.app/users`)
   .then((res)=>res.json())

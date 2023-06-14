@@ -6,14 +6,15 @@ import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 
 const UpdateClass = () => {
+    
     const classUpdate = useLoaderData();
     const {user} = useContext(AuthContext);
     const {_id, class_image, class_name, price , available_seats} = classUpdate;
     const { register, handleSubmit, formState: { errors } } = useForm();
-    // console.log(classUpdate)
+
     const onSubmit = data => {
         // update handle api
-        fetch(`http://localhost:5000/update_class/${_id}`,{
+        fetch(`https://sports-academie-server.vercel.app/update_class/${_id}`,{
          method:"PUT",
          headers:{
              "content-type":"application/json"

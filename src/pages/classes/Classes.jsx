@@ -22,7 +22,7 @@ const Classes = () => {
 
   // classes data get from database
   useEffect(()=>{
-    fetch(`http://localhost:5000/manage_classes`)
+    fetch(`https://sports-academie-server.vercel.app/manage_classes`)
     .then((res)=>res.json())
     .then((data)=>{
       const statusCheck = data.filter((classStatus)=>classStatus.status==="approved")
@@ -41,7 +41,7 @@ const Classes = () => {
       )
     }else{
       // selects data post
-      fetch(`http://localhost:5000/selects`,{
+      fetch(`https://sports-academie-server.vercel.app/selects`,{
         method:"POST",
         headers:{
           "content-type":"application/json"
@@ -68,8 +68,7 @@ const Classes = () => {
       <Cover coverImg={coverImage} title="Classes"></Cover>
         <div className='container mx-auto px-5 py-20'>
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-10'>
-              {classes.map((classInfo)=><>
-                <div className='rounded-lg'>
+              {classes.map((classInfo)=><div key={classInfo._id} className='rounded-lg'>
                   <img className='w-full h-[300px] object-cover rounded-t-md' src={classInfo.class_image} alt="Sports_image" />
                   <div className='p-4 border rounded-b-lg'>
                       <h3 className='text-2xl font-semibold mb-4'>{classInfo.class_name}</h3>
@@ -90,8 +89,7 @@ const Classes = () => {
                         <button onClick={()=>handleLoginCheck(classInfo,user.email)}  className='px-7 py-2 bg-black text-white rounded-md font-semibold text-base mt-5'>Select</button>
                       }
                   </div>
-                </div>             
-              </>)}
+                </div>)}
             </div>
         </div>
     </div>

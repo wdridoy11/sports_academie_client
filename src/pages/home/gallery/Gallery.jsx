@@ -36,11 +36,9 @@ const Gallery = () => {
           <h1 className='text-4xl font-semibold text-black text-center mb-5'>The Gallery Academies</h1>
             <div>
                 <LightGallery plugins={[lgZoom, lgVideo]} mode="lg-fade">
-                  {galleryImage.map((gallery, index)=><>
-                      <a href={gallery.img} key={index} className='w-full md:w-1/2 p-2 lg:w-1/3'>
+                  {galleryImage.map((gallery, index)=><a href={gallery.img} key={index} className='w-full md:w-1/2 p-2 lg:w-1/3'>
                           <img className='img-responsive w-full h-[320px] rounded-t-lg object-cover' src={gallery.img} alt="player" />
-                      </a>
-                   </>)}
+                      </a>)}
                 </LightGallery>
             </div>
         </div>
