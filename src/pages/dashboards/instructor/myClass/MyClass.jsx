@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../../../context/AuthProvider'
 import { FaEdit } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const MyClass = () => {
 
@@ -32,7 +33,7 @@ const MyClass = () => {
               </tr>
             </thead>
             <tbody>
-              {instructorClass.map((instructor)=>console.log(instructor))}
+              {instructorClass.map((instructor)=>console.log(instructor._id))}
               {instructorClass.map((instructor,index)=><>
                 <tr>
                    <th>{index+1}</th>
@@ -48,7 +49,9 @@ const MyClass = () => {
                    <td className='text-base font-semibold'>0</td>
                    <td className='text-base font-semibold'>Feedback</td>
                    <td>
-                      <FaEdit className='text-4xl rounded-md bg-[#05F3FF] p-2'></FaEdit>
+                      <Link to={`/dashboard/update_class/${instructor._id}`}>
+                          <FaEdit className='text-4xl rounded-md bg-[#05F3FF] p-2'></FaEdit>
+                      </Link>
                     </td>
                   </tr>
               </>)}

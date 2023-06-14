@@ -1,11 +1,12 @@
 import React, { useContext } from 'react'
 import { useEffect, useState } from 'react';
+import anime from 'animejs/lib/anime.es.js';
 import { FaTrash, FaUserShield, FaUsers } from 'react-icons/fa'
 import { AuthContext } from '../../../../context/AuthProvider'
 import Swal from 'sweetalert2';
-
 const ManageUser = () => {
-
+  const anime = require('animejs');
+  // const anime = require('animejs');
   const {user} = useContext(AuthContext);
   const [users, setUsers] = useState([]);
 
@@ -84,8 +85,8 @@ const ManageUser = () => {
   }
 
   return (
-    <div>
-      <div className="w-full px-5">
+    <div className='w-full'>
+      <div className="px-5">
         <div className="overflow-x-auto">
             <table className="table table-zebra w-full">
               <thead>

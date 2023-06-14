@@ -19,6 +19,7 @@ import ManageUser from '../../pages/dashboards/admin/manageUser/ManageUser'
 import ManageClass from '../../pages/dashboards/admin/manageClass/ManageClass'
 import MySelecteClass from '../../pages/dashboards/student/mySelecteClass/MySelecteClass'
 import MyEnrollClass from '../../pages/dashboards/student/myEnrollClass/MyEnrollClass'
+import UpdateClass from '../../pages/dashboards/instructor/updateClass/UpdateClass'
 
 const router=createBrowserRouter([
     {
@@ -67,7 +68,11 @@ const router=createBrowserRouter([
                 path:"my_class",
                 element:<InstructorsRoute><MyClass></MyClass></InstructorsRoute>
             },
-
+            {
+                path:"update_class/:id",
+                element:<InstructorsRoute><UpdateClass></UpdateClass></InstructorsRoute>,
+                loader:({params})=>fetch(`http://localhost:5000/manage_classes/${params.id}`)
+            },
             {
                 path:"my_enroll_class",
                 element:<PrivetRoute><MyEnrollClass></MyEnrollClass></PrivetRoute>
