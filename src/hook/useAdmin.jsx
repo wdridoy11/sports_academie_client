@@ -1,7 +1,7 @@
 import { useContext } from "react"
-import { AuthContext } from "../context/AuthProvider"
-import { useQuery } from '@tanstack/react-query'
 import useAxiosSecure from "./useAxiosSecure";
+import { useQuery } from '@tanstack/react-query'
+import { AuthContext } from "../context/AuthProvider"
 
 // user admin check
 const useAdmin =()=>{
